@@ -1,0 +1,17 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: upstar-pg
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: upstar_dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: a1212333
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./migrations:/docker-entrypoint-initdb.d  # auto-runs migrations on first start
+
+volumes:
+  pgdata:

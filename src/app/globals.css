@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@layer base {
+  /* ── Light Mode (default) ── "Calm Authority" palette ── */
+  :root {
+    --background: #FAF9F7;
+    --foreground: #1C2A39;
+
+    --gold: #C9A86A;
+    --gold-light: #B89A5C;
+    --gold-dark: #A88B52;
+
+    --navy-1: #FAF9F7;
+    --navy-2: #ECE8E2;
+    --navy-3: #E2DED8;
+    --navy-4: #F2EFEB;
+
+    --muted: #6B7A8A;
+    --cyan: #516B84;
+    --success: #4A8F6B;
+    --danger: #B85050;
+
+    --glass-bg: rgba(255, 255, 255, 0.92);
+    --glass-bg-end: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(0, 0, 0, 0.06);
+
+    --page-gradient: linear-gradient(135deg, #FAF9F7 0%, #F2EFEB 40%, #ECE8E2 70%, #FAF9F7 100%);
+    --nav-scrolled-bg: rgba(250, 249, 247, 0.95);
+    --subtle-border: rgba(0, 0, 0, 0.05);
+
+    --text-primary: #1C2A39;
+    --text-secondary: #2E4050;
+    --text-tertiary: #516B84;
+
+    --input-bg: rgba(0, 0, 0, 0.03);
+    --input-border: rgba(0, 0, 0, 0.10);
+
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
+    --hero-overlay: linear-gradient(to top, #FAF9F7, rgba(250,249,247,0.5), transparent);
+
+    /* ── Chart palette ── */
+    --chart-1: #C9A86A;
+    --chart-2: #516B84;
+    --chart-3: #4A8F6B;
+    --chart-4: #C47A7A;
+    --chart-5: #8B82C4;
+    --chart-6: #5B9E96;
+  }
+
+  /* ── Dark Mode ── */
+  .dark {
+    --background: #1C2A39;
+    --foreground: #FAF9F7;
+
+    --gold: #D4B87A;
+    --gold-light: #C9A86A;
+    --gold-dark: #A88B52;
+
+    --navy-1: #1C2A39;
+    --navy-2: #243545;
+    --navy-3: #2E4050;
+    --navy-4: #1F2F3E;
+
+    --muted: #8A9AAD;
+    --cyan: #7BA7C2;
+    --success: #6BAF8E;
+    --danger: #C47070;
+
+    --glass-bg: rgba(28, 42, 57, 0.90);
+    --glass-bg-end: rgba(28, 42, 57, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.08);
+
+    --page-gradient: linear-gradient(135deg, #1C2A39 0%, #243545 40%, #2E4050 70%, #1F2F3E 100%);
+    --nav-scrolled-bg: rgba(28, 42, 57, 0.92);
+    --subtle-border: rgba(255, 255, 255, 0.05);
+
+    --text-primary: #FAF9F7;
+    --text-secondary: rgba(250, 249, 247, 0.8);
+    --text-tertiary: rgba(250, 249, 247, 0.6);
+
+    --input-bg: rgba(255, 255, 255, 0.05);
+    --input-border: rgba(201, 168, 106, 0.2);
+
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --hero-overlay: linear-gradient(to top, #1C2A39, rgba(28,42,57,0.5), transparent);
+
+    /* ── Chart palette ── */
+    --chart-1: #D4B87A;
+    --chart-2: #7BA7C2;
+    --chart-3: #6BAF8E;
+    --chart-4: #D48E8E;
+    --chart-5: #A49ED4;
+    --chart-6: #74B8B4;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-navy-1: var(--navy-1);
+  --color-navy-2: var(--navy-2);
+  --color-navy-3: var(--navy-3);
+  --color-navy-4: var(--navy-4);
+  --color-muted: var(--muted);
+  --color-cyan: var(--cyan);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-manrope);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  font-size: 131.25%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), 'Inter', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading), var(--font-sans), 'Manrope', 'Inter', sans-serif;
+}
+
+/* Icon flip animation */
+@keyframes flip {
+  0%, 70%, 100% { transform: rotateY(0deg); }
+  35% { transform: rotateY(180deg); }
+}
+.animate-flip-1 { animation: flip 4s ease-in-out infinite; }
+.animate-flip-2 { animation: flip 4s ease-in-out infinite 1.3s; }
+.animate-flip-3 { animation: flip 4s ease-in-out infinite 2.6s; }
+
+/* Marquee animation for repeating tags */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 10s linear infinite;
+}
+
+/* Native <select> dropdowns — solid bg so options are readable */
+select {
+  background-color: var(--navy-2);
+  color: var(--foreground);
+}
+option {
+  background-color: var(--navy-2);
+  color: var(--foreground);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--input-bg); }
+::-webkit-scrollbar-thumb { background: rgba(201,168,106,0.3); border-radius: 3px; }
+
+html { scroll-behavior: smooth; }
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-20px); }
+}
+
+@keyframes float-slow {
+  0% { transform: translateY(0px) translateX(0px); }
+  100% { transform: translateY(-30px) translateX(10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(201, 168, 106, 0.15); }
+  50% { box-shadow: 0 0 40px rgba(201, 168, 106, 0.3); }
+}

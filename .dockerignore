@@ -1,0 +1,14 @@
+node_modules
+.next
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+terraform/
+tmp/
+guest-insight-pro/
+guest-insight-pro.zip
+*.md
+.claude/
+.vscode/
