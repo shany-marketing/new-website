@@ -904,6 +904,290 @@ export function RatingHeroVisual() {
   );
 }
 
+/* ═══════════════ HERO VISUAL V2 ═══════════════ */
+
+type ReviewItem = {
+  kind: "booking" | "tripadvisor" | "google" | "expedia";
+  reviewer: string;
+  meta?: string;
+  score?: number;
+  bubbles?: number;
+  stars?: number;
+  title?: string;
+  text: string;
+  date: string;
+};
+
+const HERO_REVIEWS: ReviewItem[] = [
+  { kind: "booking",     reviewer: "Sarah M.",        meta: "United States · 2 nights",  score: 5.8, text: "Waited 45 minutes to check in. Nobody at the front desk.",    date: "March 2026" },
+  { kind: "tripadvisor", reviewer: "Mark_Travels",                                        bubbles: 2, text: "Three families. One agent. Ruined our first impression.",      date: "March 2026", title: "Terrible check-in experience" },
+  { kind: "google",      reviewer: "James T.",                                            stars: 2,   text: "No one at reception when we arrived. Waited almost an hour.", date: "2 weeks ago" },
+  { kind: "expedia",     reviewer: "Hotel guest",                                         stars: 1,   text: "Slow check-in process. Staff completely overwhelmed.",         date: "March 2026" },
+  { kind: "booking",     reviewer: "David K.",        meta: "United Kingdom · 3 nights",  score: 4.2, text: "Check-in chaos. Long queue, understaffed desk.",              date: "April 2026" },
+  { kind: "tripadvisor", reviewer: "LuxuryTraveler22",                                   bubbles: 1, text: "45-minute wait at check-in. Unacceptable for a 4-star.",       date: "April 2026", title: "Unacceptable" },
+];
+
+const HERO_DEPTHS = [
+  { x: 0,  y: 0,  r: 0,    z: 10, o: 1    },
+  { x: -5, y: 10, r: -2,   z: 9,  o: 0.92 },
+  { x: 6,  y: 18, r: 2.5,  z: 8,  o: 0.85 },
+  { x: -4, y: 25, r: -1.5, z: 7,  o: 0.78 },
+  { x: 7,  y: 31, r: 3,    z: 6,  o: 0.72 },
+  { x: -6, y: 36, r: -2,   z: 5,  o: 0.65 },
+];
+
+function bookingScoreColor(s: number) {
+  if (s >= 7) return "#4CAF50";
+  if (s >= 6) return "#FFA000";
+  if (s >= 5) return "#E64A19";
+  return "#C62828";
+}
+function bookingScoreLabel(s: number) {
+  if (s >= 9) return "Exceptional";
+  if (s >= 8) return "Superb";
+  if (s >= 7) return "Very good";
+  if (s >= 6) return "Okay";
+  if (s >= 5) return "Disappointing";
+  return "Poor";
+}
+
+function HeroReviewCard({ r }: { r: ReviewItem }) {
+  const cardBase: React.CSSProperties = {
+    background: "#fff",
+    borderRadius: "12px",
+    overflow: "hidden",
+    border: "1px solid rgba(0,0,0,0.1)",
+    boxShadow: "0 4px 18px rgba(0,0,0,0.13)",
+  };
+
+  if (r.kind === "booking") {
+    const col = bookingScoreColor(r.score!);
+    return (
+      <div style={cardBase}>
+        <div style={{ background: "#003580", padding: "8px 16px" }}>
+          <span style={{ color: "white", fontSize: "11px", fontWeight: 700, letterSpacing: "-0.2px" }}>booking.com</span>
+        </div>
+        <div style={{ padding: "12px 16px 16px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "8px" }}>
+            <div>
+              <p style={{ fontSize: "11px", fontWeight: 600, color: "#1a1a1a", marginBottom: "2px" }}>{r.reviewer}</p>
+              {r.meta && <p style={{ fontSize: "10px", color: "#888" }}>{r.meta}</p>}
+            </div>
+            <div style={{ textAlign: "right" }}>
+              <div style={{ background: col, borderRadius: "6px", padding: "3px 8px", display: "inline-block" }}>
+                <span style={{ color: "white", fontSize: "15px", fontWeight: 800, lineHeight: 1 }}>{r.score!.toFixed(1)}</span>
+              </div>
+              <p style={{ fontSize: "9px", color: col, fontWeight: 600, marginTop: "2px" }}>{bookingScoreLabel(r.score!)}</p>
+            </div>
+          </div>
+          <p style={{ fontSize: "19px", color: "#222", lineHeight: 1.6, fontWeight: 500 }}>&ldquo;{r.text}&rdquo;</p>
+          <p style={{ fontSize: "10px", color: "#bbb", marginTop: "6px" }}>{r.date}</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (r.kind === "tripadvisor") {
+    return (
+      <div style={cardBase}>
+        <div style={{ background: "#00AA6C", padding: "7px 12px", display: "flex", alignItems: "center", gap: "6px" }}>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="white">
+            <circle cx="7" cy="13" r="4"/><circle cx="17" cy="13" r="4"/>
+            <circle cx="7" cy="12" r="1.8" fill="#00AA6C"/><circle cx="17" cy="12" r="1.8" fill="#00AA6C"/>
+            <path d="M4 9 C4 5 8 3 12 3 C16 3 20 5 20 9" stroke="white" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+          </svg>
+          <span style={{ color: "white", fontSize: "11px", fontWeight: 700 }}>Tripadvisor</span>
+        </div>
+        <div style={{ padding: "12px 16px 16px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+            <p style={{ fontSize: "11px", fontWeight: 600, color: "#1a1a1a" }}>{r.reviewer}</p>
+            <div style={{ display: "flex", gap: "3px" }}>
+              {[1,2,3,4,5].map(n => (
+                <div key={n} style={{ width: "11px", height: "11px", borderRadius: "50%", background: n <= r.bubbles! ? "#00AA6C" : "rgba(0,170,108,0.18)" }} />
+              ))}
+            </div>
+          </div>
+          {r.title && <p style={{ fontSize: "12px", fontWeight: 700, color: "#1a1a1a", marginBottom: "4px" }}>{r.title}</p>}
+          <p style={{ fontSize: "19px", color: "#222", lineHeight: 1.6, fontWeight: 500 }}>&ldquo;{r.text}&rdquo;</p>
+          <p style={{ fontSize: "10px", color: "#bbb", marginTop: "6px" }}>{r.date}</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (r.kind === "google") {
+    return (
+      <div style={cardBase}>
+        <div style={{ padding: "12px 16px 16px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
+            <svg width="16" height="16" viewBox="0 0 24 24">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            <div>
+              <p style={{ fontSize: "11px", fontWeight: 600, color: "#1a1a1a", lineHeight: 1 }}>{r.reviewer}</p>
+              <p style={{ fontSize: "10px", color: "#888", marginTop: "2px" }}>{r.date}</p>
+            </div>
+          </div>
+          <div style={{ display: "flex", gap: "2px", marginBottom: "8px" }}>
+            {[1,2,3,4,5].map(n => (
+              <svg key={n} width="13" height="13" viewBox="0 0 24 24" fill={n <= r.stars! ? "#FBBC04" : "#e0e0e0"}>
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            ))}
+          </div>
+          <p style={{ fontSize: "19px", color: "#222", lineHeight: 1.6, fontWeight: 500 }}>&ldquo;{r.text}&rdquo;</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Expedia
+  return (
+    <div style={cardBase}>
+      <div style={{ background: "#00355F", padding: "8px 16px" }}>
+        <span style={{ color: "#FFC72C", fontSize: "13px", fontWeight: 900, letterSpacing: "-0.3px" }}>expedia</span>
+      </div>
+      <div style={{ padding: "12px 16px 16px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+          <p style={{ fontSize: "11px", fontWeight: 600, color: "#1a1a1a" }}>{r.reviewer}</p>
+          <div style={{ display: "flex", gap: "2px" }}>
+            {[1,2,3,4,5].map(n => (
+              <svg key={n} width="12" height="12" viewBox="0 0 24 24" fill={n <= r.stars! ? "#FFC72C" : "#e0e0e0"}>
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            ))}
+          </div>
+        </div>
+        <p style={{ fontSize: "19px", color: "#222", lineHeight: 1.6, fontWeight: 500 }}>&ldquo;{r.text}&rdquo;</p>
+        <p style={{ fontSize: "10px", color: "#bbb", marginTop: "6px" }}>{r.date}</p>
+      </div>
+    </div>
+  );
+}
+
+function HeroVisualNew() {
+  const [visibleCount, setVisibleCount] = useState(0);
+  const [phase, setPhase] = useState<"reviews" | "stat" | "question">("reviews");
+
+  useEffect(() => {
+    const tids: ReturnType<typeof setTimeout>[] = [];
+    function run() {
+      setVisibleCount(0);
+      setPhase("reviews");
+      tids.push(setTimeout(() => setVisibleCount(1), 400));
+      tids.push(setTimeout(() => setVisibleCount(2), 2100));
+      tids.push(setTimeout(() => setVisibleCount(3), 3700));
+      tids.push(setTimeout(() => setVisibleCount(4), 4100));
+      tids.push(setTimeout(() => setVisibleCount(5), 4500));
+      tids.push(setTimeout(() => setVisibleCount(6), 4900));
+      tids.push(setTimeout(() => setPhase("stat"), 6300));
+      tids.push(setTimeout(() => setPhase("question"), 9000));
+      tids.push(setTimeout(run, 12500));
+    }
+    const init = setTimeout(run, 600);
+    return () => { clearTimeout(init); tids.forEach(clearTimeout); };
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.7, delay: 0.5 }}
+      className="shrink-0"
+      style={{ width: "320px", overflow: "visible" }}
+    >
+      <AnimatePresence mode="wait">
+
+        {phase === "reviews" && (
+          <motion.div
+            key="reviews"
+            exit={{ opacity: 0, scale: 0.96, y: -6 }}
+            transition={{ duration: 0.35 }}
+            style={{ position: "relative", height: "440px", overflow: "visible" }}
+          >
+            {HERO_REVIEWS.map((r, i) => {
+              if (i >= visibleCount) return null;
+              const depth = visibleCount - 1 - i;
+              const d = HERO_DEPTHS[depth] ?? HERO_DEPTHS[HERO_DEPTHS.length - 1];
+              const isFast = visibleCount > 2 && depth === 0;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ x: 50, opacity: 0, rotate: d.r + 6 }}
+                  animate={{ x: d.x, y: d.y, opacity: d.o, rotate: d.r, zIndex: d.z }}
+                  transition={{ duration: isFast ? 0.3 : 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ position: "absolute", width: "320px", top: 0, overflow: "visible" }}
+                >
+                  <HeroReviewCard r={r} />
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        )}
+
+        {phase === "stat" && (
+          <motion.div
+            key="stat"
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.5 }}
+            className="px-2"
+          >
+            <motion.p
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              style={{ fontFamily: "var(--font-manrope)", fontSize: "clamp(48px, 10vw, 68px)", fontWeight: 900, lineHeight: 1.0, color: "var(--foreground)" }}
+            >
+              47 reviews.
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.25 }}
+              style={{ fontFamily: "var(--font-manrope)", fontSize: "clamp(48px, 10vw, 68px)", fontWeight: 900, lineHeight: 1.0, color: "#e05555", marginTop: "10px" }}
+            >
+              Same issue.
+            </motion.p>
+          </motion.div>
+        )}
+
+        {phase === "question" && (
+          <motion.div
+            key="question"
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="px-2"
+          >
+            <motion.p
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              style={{ fontFamily: "var(--font-manrope)", fontSize: "clamp(34px, 7.5vw, 50px)", fontWeight: 800, lineHeight: 1.15, color: "var(--foreground)" }}
+            >
+              Your guests know.
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              style={{ fontFamily: "var(--font-manrope)", fontSize: "clamp(52px, 11vw, 76px)", fontWeight: 900, lineHeight: 1.0, color: "var(--gold)", marginTop: "12px" }}
+            >
+              Do you?
+            </motion.p>
+          </motion.div>
+        )}
+
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
 function StatCounter({ stat, inView }: { stat: typeof STATS[number]; inView: boolean }) {
   const count = useCountUp(stat.value, 2000, inView, stat.value < 1 ? 1 : 0);
   const display = stat.value >= 1000 ? count.toLocaleString() : count;
@@ -1538,7 +1822,7 @@ export default function HomeClient() {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="text-xl md:text-2xl text-muted max-w-lg mb-10"
               >
-                RatingIQ tells you exactly which reviews to act on - and directs your team to fix them.
+                RatingIQ tells you exactly what your reviews reveal - and directs your team to act on it.
               </motion.p>
 
               <motion.div
@@ -1568,8 +1852,8 @@ export default function HomeClient() {
             </div>
 
             {/* Right: animated rating visual */}
-            <div className="flex justify-center md:justify-end">
-              <RatingHeroVisual />
+            <div className="flex justify-center items-center">
+              <HeroVisualNew />
             </div>
 
             </div>{/* end grid */}
@@ -1613,17 +1897,26 @@ export default function HomeClient() {
             {/* Chain reaction - animated sequence player */}
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.5 }} className="mb-16 rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.07)", background: "rgba(0,0,0,0.015)" }}>
               {/* Step tabs */}
-              <div className="grid grid-cols-4 border-b" style={{ borderColor: "rgba(0,0,0,0.07)" }}>
+              <div className="flex items-stretch border-b" style={{ borderColor: "rgba(0,0,0,0.07)" }}>
                 {CHAIN_SCENES.map((sc, i) => (
-                  <button key={i} onClick={() => setChainScene(i)} className="relative flex flex-col items-center gap-1 py-3 px-2 transition-colors duration-200 text-center cursor-pointer" style={{ background: chainScene === i ? `${sc.color}08` : "transparent" }}>
-                    <span className="text-[9px] font-bold tracking-widest" style={{ color: chainScene === i ? sc.color : "rgba(0,0,0,0.25)" }}>{sc.num}</span>
-                    <span className="text-xs font-semibold leading-tight" style={{ color: chainScene === i ? "var(--foreground)" : "var(--muted)" }}>{sc.label}</span>
-                    <div className="absolute bottom-0 left-0 right-0 h-[2px]">
-                      {chainScene === i && (
-                        <motion.div key={`prog-${chainScene}`} initial={{ width: "0%" }} animate={{ width: "100%" }} transition={{ duration: 4, ease: "linear" }} style={{ height: "2px", background: sc.color }} />
-                      )}
-                    </div>
-                  </button>
+                  <div key={i} className="contents">
+                    <button onClick={() => setChainScene(i)} className="relative flex-1 flex flex-col items-center gap-1 py-3 px-2 transition-colors duration-200 text-center cursor-pointer" style={{ background: chainScene === i ? `${sc.color}08` : "transparent" }}>
+                      <span className="text-[9px] font-bold tracking-widest" style={{ color: chainScene === i ? sc.color : "rgba(0,0,0,0.25)" }}>{sc.num}</span>
+                      <span className="text-xs font-semibold leading-tight" style={{ color: chainScene === i ? "var(--foreground)" : "var(--muted)" }}>{sc.label}</span>
+                      <div className="absolute bottom-0 left-0 right-0 h-[2px]">
+                        {chainScene === i && (
+                          <motion.div key={`prog-${chainScene}`} initial={{ width: "0%" }} animate={{ width: "100%" }} transition={{ duration: 4, ease: "linear" }} style={{ height: "2px", background: sc.color }} />
+                        )}
+                      </div>
+                    </button>
+                    {i < CHAIN_SCENES.length - 1 && (
+                      <div className="flex items-center justify-center shrink-0" style={{ padding: "0 2px" }}>
+                        <svg width="18" height="18" viewBox="0 0 12 12" fill="none">
+                          <path d="M3.5 2L8 6l-4.5 4" stroke="rgba(0,0,0,0.35)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
               {/* Scene panel */}
@@ -1654,9 +1947,11 @@ export default function HomeClient() {
             </motion.div>
 
             {/* Bridge line */}
-            <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.5 }} className="text-center text-base text-muted mt-6 mb-16">
-              This isn&apos;t a data problem. It&apos;s a{" "}
-              <span className="font-semibold text-foreground">clarity problem.</span>
+            <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} transition={{ duration: 0.5 }} className="text-center mt-6 mb-16" style={{ fontFamily: "var(--font-manrope)", fontSize: "clamp(20px, 3vw, 28px)", fontWeight: 400, color: "var(--muted)" }}>
+              Do you know what{" "}
+              <span style={{ fontWeight: 800, color: "var(--foreground)" }}>one bad review</span>
+              {" "}is actually{" "}
+              <span style={{ fontWeight: 800, color: "var(--foreground)" }}>costing you?</span>
             </motion.p>
 
             {/* Cornell + Revenue calculator - combined */}
@@ -1666,7 +1961,7 @@ export default function HomeClient() {
               <div className="flex items-center gap-3 mb-5 pb-5 border-b" style={{ borderColor: "rgba(201,168,106,0.15)" }}>
                 <span className="shrink-0" style={{ color: "var(--gold)" }}>★</span>
                 <p className="text-sm font-medium text-foreground">
-                  <em>Cornell&apos;s hospitality research: &ldquo;+10% in reputation score = <strong>+14% RevPAR.</strong>&rdquo;</em>
+                  <em>Cornell Hospitality Research: &ldquo;A 1% reputation improvement leads to up to a <strong>1.42% increase in RevPAR.</strong>&rdquo;</em>
                 </p>
               </div>
 
@@ -1688,11 +1983,11 @@ export default function HomeClient() {
                 </div>
                 <div className="hidden md:block w-px h-12 opacity-20 bg-foreground" />
                 <div className="text-center md:text-left">
-                  <p className="text-xs text-muted mb-1">Annual RevPAR opportunity</p>
+                  <p className="text-xs text-muted mb-1">Annual Revenue Growth Opportunity</p>
                   <p className="text-3xl font-black" style={{ color: "var(--gold)", fontFamily: "var(--font-manrope)" }}>
-                    ${(properties * 50 * 100 * 365 * 0.14 / 1000000).toFixed(1)}M
+                    ${Math.round(properties * 100 * 100 * 365 * 0.034557).toLocaleString()}
                   </p>
-                  <p className="text-xs text-muted mt-1">Assumes 50 rooms · $100 avg RevPAR</p>
+                  <p className="text-xs text-muted mt-1">Assumes 100 rooms · $100 avg RevPAR · rating increase from 7.9 to 8.0</p>
                 </div>
               </div>
 
