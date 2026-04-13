@@ -1985,9 +1985,9 @@ export default function HomeClient() {
                 <div className="text-center md:text-left">
                   <p className="text-xs text-muted mb-1">Annual Revenue Growth Opportunity</p>
                   <p className="text-3xl font-black" style={{ color: "var(--gold)", fontFamily: "var(--font-manrope)" }}>
-                    ${Math.round(properties * 100 * 100 * 365 * 0.034557).toLocaleString()}
+                    ${Math.round(properties * 100 * 100 * 365 * 0.7257).toLocaleString()}
                   </p>
-                  <p className="text-xs text-muted mt-1">Assumes 100 rooms · $100 avg RevPAR · rating increase from 7.9 to 8.0</p>
+                  <p className="text-xs text-muted mt-1">Assumes 100 rooms · $100 avg RevPAR · rating increase from 7.9 to 10</p>
                 </div>
               </div>
 
