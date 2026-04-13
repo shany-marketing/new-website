@@ -363,7 +363,7 @@ function GoldStars() {
   );
 }
 
-function RatingHeroVisual() {
+export function RatingHeroVisual() {
   const [stage, setStage] = useState(0);
   const [ratingDisplay, setRatingDisplay] = useState(8.4);
   const [reviewCount, setReviewCount] = useState(0);
