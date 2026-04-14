@@ -1616,16 +1616,16 @@ const FEATURE_ANIMS = [<TopIssuesAnim key="a" />, <StatsAnim key="b" />, <AIResp
 /* ═══════════════ PARTNERS CAROUSEL ═══════════════ */
 
 const PARTNERS = [
-  { name: "Wyndham",       logo: "/partners/wyndham.svg"       },
-  { name: "Ramada",        logo: "/partners/ramada.svg"        },
-  { name: "Fattal",        logo: "/partners/fattal.svg"        },
-  { name: "IDILIQ",        logo: "/partners/idiliq.svg"        },
-  { name: "Isrotel",       logo: "/partners/isrotel.svg"       },
-  { name: "Brown",         logo: "/partners/brown.svg"         },
-  { name: "Dan",           logo: "/partners/dan.svg"           },
-  { name: "Prima",         logo: "/partners/prima.svg"         },
-  { name: "Israel Canada", logo: "/partners/israel-canada.svg" },
-  { name: "Ceasar",        logo: "/partners/ceasar.svg"        },
+  { name: "Wyndham",       logo: "/partners/wyndham.png"       },
+  { name: "Ramada",        logo: "/partners/ramada.png"        },
+  { name: "Fattal",        logo: "/partners/fattal.png"        },
+  { name: "IDILIQ",        logo: "/partners/idiliq.png"        },
+  { name: "Isrotel",       logo: "/partners/isrotel.png"       },
+  { name: "Brown",         logo: "/partners/brown.png"         },
+  { name: "Dan",           logo: "/partners/dan.png"           },
+  { name: "Prima",         logo: "/partners/prima.png"         },
+  { name: "Israel Canada", logo: "/partners/israel-canada.png" },
+  { name: "Ceasar",        logo: "/partners/ceasar.png"        },
 ];
 
 function PartnersCarousel() {
@@ -1637,11 +1637,11 @@ function PartnersCarousel() {
       <div className="overflow-hidden relative" style={{ maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)" }}>
         <div className="flex animate-marquee-partners" style={{ width: "max-content", gap: "64px" }}>
           {[...PARTNERS, ...PARTNERS].map((p, i) => (
-            <div key={i} className="flex items-center justify-center shrink-0" style={{ height: "52px", minWidth: "100px" }}>
+            <div key={i} className="flex items-center justify-center shrink-0" style={{ height: "72px", minWidth: "120px" }}>
               <img
                 src={p.logo}
                 alt={p.name}
-                style={{ maxHeight: "44px", maxWidth: "130px", width: "auto", height: "auto", objectFit: "contain", filter: "grayscale(100%)", opacity: 0.55 }}
+                style={{ maxHeight: "64px", maxWidth: "160px", width: "auto", height: "auto", objectFit: "contain" }}
                 onError={e => {
                   const el = e.currentTarget as HTMLImageElement;
                   el.style.display = "none";
