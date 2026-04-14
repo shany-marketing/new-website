@@ -37,11 +37,11 @@ export default function CapabilitiesNav({ activeTier, cta }: Props) {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b" style={{ ...glass, boxShadow: "0 1px 0 var(--glass-border)" }}>
-      <nav className="max-w-6xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+      <nav className="max-w-6xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
 
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
-          <img src="/logo.svg" alt="RatingIQ" style={{ height: "48px", width: "auto" }} />
+          <img src="/logo.svg" alt="RatingIQ" style={{ height: "72px", width: "auto" }} />
         </Link>
 
         {/* Desktop links */}

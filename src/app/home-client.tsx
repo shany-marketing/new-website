@@ -1829,12 +1829,12 @@ export default function HomeClient() {
           borderColor: "var(--glass-border)",
         } : undefined}
       >
-        <nav className="max-w-6xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+        <nav className="max-w-6xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
           <Link href="/">
             <img
               src={resolvedTheme === "dark" ? "/logo-white.svg" : "/logo.svg"}
               alt="RatingIQ"
-              style={{ height: "48px", width: "auto", objectFit: "contain" }}
+              style={{ height: "72px", width: "auto", objectFit: "contain" }}
             />
           </Link>
 
@@ -2141,7 +2141,7 @@ export default function HomeClient() {
                 <div className="text-center md:text-left">
                   <p className="text-xs text-muted mb-1">Annual Revenue Growth Opportunity</p>
                   <p className="text-3xl font-black" style={{ color: "var(--gold)", fontFamily: "var(--font-manrope)" }}>
-                    ${Math.round(properties * 100 * 100 * 365 * 0.7257).toLocaleString()}
+                    ${Math.round(properties * 100 * 100 * 365 * 0.3775).toLocaleString()}
                   </p>
                   <p className="text-xs text-muted mt-1">Assumes 100 rooms · $100 avg RevPAR · rating increase from 7.9 to 10</p>
                 </div>

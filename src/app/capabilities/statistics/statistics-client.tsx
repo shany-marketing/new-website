@@ -318,7 +318,7 @@ export default function StatisticsClient() {
             </motion.p>
 
             <motion.p variants={fadeUp} transition={{ duration: 0.5 }} className="text-base text-muted max-w-2xl leading-relaxed mb-8">
-              Your full review picture starts here. Where reviews are coming from, who&apos;s writing them, when volume peaks, and whether your team is keeping up with responses. No AI, no prioritisation — just the clean, accurate numbers behind your chain&apos;s review activity. Every property. Every platform.
+              Your full review picture starts here. Where reviews are coming from, who&apos;s writing them, when volume peaks, and whether your team is keeping up with responses. No AI, no prioritisation — just the clean, accurate numbers behind your chain&apos;s review activity. Every property.
             </motion.p>
 
             <motion.div variants={fadeUp} transition={{ duration: 0.5 }} className="flex flex-wrap gap-3">
