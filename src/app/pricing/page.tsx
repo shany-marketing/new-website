@@ -104,15 +104,16 @@ export default function PricingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [signupOpen, setSignupOpen] = useState(false);
   const [signupLabel, setSignupLabel] = useState("Get Started");
+  const [signupSource, setSignupSource] = useState("pricing_page");
 
-  const openSignup = (label: string) => { setSignupLabel(label); setSignupOpen(true); };
+  const openSignup = (label: string, source = "pricing_page") => { setSignupLabel(label); setSignupSource(source); setSignupOpen(true); };
 
   return (
     <div className="min-h-screen" style={{ background: "var(--page-gradient)" }}>
 
       <CapabilitiesNav
         activeTier={null}
-        cta={{ text: "Book a Demo", href: "https://calendar.app.google/QywtyvvCugBR5U4n8", external: true }}
+        cta={{ text: "Book a Demo", href: "#", onClick: () => openSignup("Book a Demo", "pricing_nav_demo") }}
       />
 
       <div className="max-w-5xl mx-auto px-4 md:px-8 pt-40 pb-24">
@@ -182,29 +183,17 @@ export default function PricingPage() {
               <div className="flex-1" />
 
               <div>
-                {tier.external ? (
-                  <a
-                    href={tier.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-center font-semibold rounded-xl px-5 py-3 transition-all duration-200 hover:opacity-90"
-                    style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))", color: "#1C2A39" }}
-                  >
-                    {tier.cta}
-                  </a>
-                ) : (
-                  <button
-                    onClick={() => openSignup(tier.cta)}
-                    className="block w-full text-center font-semibold rounded-xl px-5 py-3 transition-all duration-200 hover:opacity-90"
-                    style={
-                      tier.name === "Free"
-                        ? { background: "var(--input-bg)", border: "1px solid var(--glass-border)", color: "var(--foreground)" }
-                        : { background: "linear-gradient(to right, var(--gold), var(--gold-dark))", color: "#1C2A39" }
-                    }
-                  >
-                    {tier.cta}
-                  </button>
-                )}
+                <button
+                  onClick={() => openSignup(tier.cta, tier.name === "Premium" ? "pricing_premium_demo" : tier.name === "Ratings" ? "pricing_try_ratings" : "pricing_start_free")}
+                  className="block w-full text-center font-semibold rounded-xl px-5 py-3 transition-all duration-200 hover:opacity-90"
+                  style={
+                    tier.name === "Free"
+                      ? { background: "var(--input-bg)", border: "1px solid var(--glass-border)", color: "var(--foreground)" }
+                      : { background: "linear-gradient(to right, var(--gold), var(--gold-dark))", color: "#1C2A39" }
+                  }
+                >
+                  {tier.cta}
+                </button>
                 <p className="text-center text-xs mt-2" style={{ color: "var(--muted)", visibility: tier.highlight ? "visible" : "hidden" }}>we&apos;ll walk you through it live</p>
               </div>
             </motion.div>
@@ -272,15 +261,15 @@ export default function PricingPage() {
             <button onClick={() => openSignup("Start Free")} className="px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90" style={{ background: "var(--input-bg)", border: "1px solid var(--glass-border)", color: "var(--foreground)" }}>
               Start Free
             </button>
-            <a href="https://calendar.app.google/QywtyvvCugBR5U4n8" target="_blank" rel="noopener noreferrer" className="px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90" style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))", color: "#1C2A39" }}>
+            <button onClick={() => openSignup("Book a Demo", "pricing_bottom_demo")} className="px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90" style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))", color: "#1C2A39" }}>
               Book a Demo →
-            </a>
+            </button>
           </div>
         </motion.div>
 
       </div>
 
-      <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} ctaSource="pricing_page" ctaLabel={signupLabel} />
+      <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} ctaSource={signupSource} ctaLabel={signupLabel} />
     </div>
   );
 }

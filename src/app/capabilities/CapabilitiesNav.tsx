@@ -41,7 +41,7 @@ export default function CapabilitiesNav({ activeTier, cta }: Props) {
 
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
-          <img src="/logo.svg" alt="RatingIQ" style={{ height: "32px", width: "auto" }} />
+          <img src="/logo.svg" alt="RatingIQ" style={{ height: "48px", width: "auto" }} />
         </Link>
 
         {/* Desktop links */}

@@ -1683,7 +1683,7 @@ export default function HomeClient() {
             <img
               src={resolvedTheme === "dark" ? "/logo-white.svg" : "/logo.svg"}
               alt="RatingIQ"
-              style={{ height: "32px", width: "auto", objectFit: "contain" }}
+              style={{ height: "48px", width: "auto", objectFit: "contain" }}
             />
           </Link>
 
