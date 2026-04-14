@@ -1629,7 +1629,7 @@ export default function HomeClient() {
   const openLead = (source: string, opts?: { variant?: "signup" | "elaine"; title?: string; subtitle?: string; ctaLabel?: string }) =>
     setLeadModal({ open: true, source, ...opts });
   const closeLead = () => setLeadModal(m => ({ ...m, open: false }));
-  const [faqForm, setFaqForm] = useState({ name: "", hotel: "", email: "", question: "" });
+  const [faqForm, setFaqForm] = useState({ name: "", hotel: "", email: "", phone: "", question: "" });
   const [faqSent, setFaqSent] = useState(false);
   const [chainScene, setChainScene] = useState(0);
   const [properties, setProperties] = useState(10);
@@ -2573,14 +2573,24 @@ export default function HomeClient() {
                           style={{ background: "var(--input-bg)", border: "1px solid var(--input-border)" }}
                         />
                       </div>
-                      <input
-                        type="email"
-                        placeholder="Work email"
-                        value={faqForm.email}
-                        onChange={e => setFaqForm(f => ({ ...f, email: e.target.value }))}
-                        className="w-full rounded-lg px-3 py-2.5 text-sm text-foreground placeholder:text-muted outline-none focus:ring-1 focus:ring-gold/40 transition"
-                        style={{ background: "var(--input-bg)", border: "1px solid var(--input-border)" }}
-                      />
+                      <div className="grid grid-cols-2 gap-3">
+                        <input
+                          type="email"
+                          placeholder="Work email"
+                          value={faqForm.email}
+                          onChange={e => setFaqForm(f => ({ ...f, email: e.target.value }))}
+                          className="w-full rounded-lg px-3 py-2.5 text-sm text-foreground placeholder:text-muted outline-none focus:ring-1 focus:ring-gold/40 transition"
+                          style={{ background: "var(--input-bg)", border: "1px solid var(--input-border)" }}
+                        />
+                        <input
+                          type="tel"
+                          placeholder="Phone number"
+                          value={faqForm.phone}
+                          onChange={e => setFaqForm(f => ({ ...f, phone: e.target.value }))}
+                          className="w-full rounded-lg px-3 py-2.5 text-sm text-foreground placeholder:text-muted outline-none focus:ring-1 focus:ring-gold/40 transition"
+                          style={{ background: "var(--input-bg)", border: "1px solid var(--input-border)" }}
+                        />
+                      </div>
                       <textarea
                         rows={3}
                         placeholder="What would you like to know?"
@@ -2590,7 +2600,7 @@ export default function HomeClient() {
                         style={{ background: "var(--input-bg)", border: "1px solid var(--input-border)" }}
                       />
                       <button
-                        onClick={() => { if (faqForm.name && faqForm.email && faqForm.question) { pushLeadToCRM({ name: faqForm.name, hotel: faqForm.hotel, email: faqForm.email, ctaSource: "faq_question", question: faqForm.question }); setFaqSent(true); } }}
+                        onClick={() => { if (faqForm.name && faqForm.email && faqForm.question) { pushLeadToCRM({ name: faqForm.name, hotel: faqForm.hotel, email: faqForm.email, phone: faqForm.phone, ctaSource: "faq_question", question: faqForm.question }); setFaqSent(true); } }}
                         className="w-full font-semibold rounded-lg px-4 py-2.5 text-sm transition-all duration-300 hover:opacity-90"
                         style={{ background: "#1C2A39", color: "#ECE8E2" }}
                       >
