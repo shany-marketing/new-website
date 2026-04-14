@@ -280,7 +280,7 @@ export default function PricingPage() {
 
       </div>
 
-      <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} ctaLabel={signupLabel} />
+      <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} ctaSource="pricing_page" ctaLabel={signupLabel} />
     </div>
   );
 }

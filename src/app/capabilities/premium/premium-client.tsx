@@ -400,6 +400,7 @@ export default function PremiumClient() {
       <SignupModal
         open={demoOpen}
         onClose={() => setDemoOpen(false)}
+        ctaSource="premium_book_demo"
         title="Book a demo."
         subtitle="We connect to your chain's actual data and show you your real insights — live."
         ctaLabel="Book a Demo"

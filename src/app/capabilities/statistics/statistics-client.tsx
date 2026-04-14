@@ -402,7 +402,7 @@ export default function StatisticsClient() {
         </div>
       </main>
 
-      <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} ctaLabel="Start Free" />
+      <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} ctaSource="statistics_start_free" ctaLabel="Start Free" />
     </div>
   );
 }

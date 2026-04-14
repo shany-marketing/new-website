@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
 import ThemeToggle from "@/components/ui/theme-toggle";
+import SignupModal, { pushLeadToCRM } from "@/app/components/SignupModal";
 
 /* ─────────────── constants ─────────────── */
 
@@ -1621,8 +1622,13 @@ export default function HomeClient() {
   const [capabilitiesOpen, setCapabilitiesOpen] = useState(false);
   const [capabilitiesMobileOpen, setCapabilitiesMobileOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [elaineModal, setElaineModal] = useState(false);
-  const [signupForm, setSignupForm] = useState({ name: "", hotel: "", email: "" });
+  const [leadModal, setLeadModal] = useState<{
+    open: boolean; source: string; variant?: "signup" | "elaine";
+    title?: string; subtitle?: string; ctaLabel?: string;
+  }>({ open: false, source: "" });
+  const openLead = (source: string, opts?: { variant?: "signup" | "elaine"; title?: string; subtitle?: string; ctaLabel?: string }) =>
+    setLeadModal({ open: true, source, ...opts });
+  const closeLead = () => setLeadModal(m => ({ ...m, open: false }));
   const [faqForm, setFaqForm] = useState({ name: "", hotel: "", email: "", question: "" });
   const [faqSent, setFaqSent] = useState(false);
   const [chainScene, setChainScene] = useState(0);
@@ -1728,13 +1734,13 @@ export default function HomeClient() {
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
             <Link href="/login" className="text-sm font-semibold transition-colors duration-200 px-4 py-2" style={{ color: "#1C2A39" }}>Log In</Link>
-            <Link
-              href="#contact"
+            <button
+              onClick={() => openLead("nav_book_demo", { title: "Book a demo.", subtitle: "Tell us about your chain and we'll set up a live session.", ctaLabel: "Book a Demo" })}
               className="text-sm font-semibold text-navy-1 rounded-xl px-5 py-2.5 transition-all duration-300 hover:opacity-90 hover:scale-[1.02]"
               style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))" }}
             >
               Book a Demo
-            </Link>
+            </button>
           </div>
 
           {/* Mobile hamburger */}
@@ -1770,14 +1776,13 @@ export default function HomeClient() {
             <div className="flex flex-col gap-2 mt-3 pt-3 border-t" style={{ borderColor: "var(--glass-border)" }}>
               <ThemeToggle className="self-start" />
               <Link href="/login" onClick={closeMobileNav} className="font-semibold transition-colors py-2" style={{ color: "#1C2A39" }}>Log In</Link>
-              <Link
-                href="#contact"
-                onClick={closeMobileNav}
+              <button
+                onClick={() => { closeMobileNav(); openLead("nav_book_demo", { title: "Book a demo.", subtitle: "Tell us about your chain and we'll set up a live session.", ctaLabel: "Book a Demo" }); }}
                 className="text-center font-semibold text-navy-1 rounded-xl px-5 py-2.5"
                 style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))" }}
               >
                 Book a Demo
-              </Link>
+              </button>
             </div>
           </div>
         )}
@@ -1865,13 +1870,13 @@ export default function HomeClient() {
           <div className="max-w-5xl mx-auto flex justify-center">
             <div className="flex flex-col sm:flex-row items-center gap-3">
               <p className="text-base font-medium text-muted">Your rating could be higher. Do you know what&apos;s holding it back?</p>
-              <Link
-                href="#contact"
+              <button
+                onClick={() => openLead("cta_strip", { title: "Let us tell you.", subtitle: "We'll show you exactly what's holding your rating back.", ctaLabel: "Show Me" })}
                 className="text-sm font-semibold px-4 py-2 rounded-lg transition-all hover:scale-[1.02] whitespace-nowrap"
                 style={{ color: "var(--gold)", background: "rgba(201,168,106,0.08)", border: "1px solid rgba(201,168,106,0.2)" }}
               >
                 We can tell you →
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -1992,10 +1997,10 @@ export default function HomeClient() {
               </div>
 
               <div className="mt-6 pt-6 border-t" style={{ borderColor: "rgba(201,168,106,0.15)" }}>
-                <a href="#contact" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:opacity-90" style={{ background: "var(--gold)", color: "#1C2A39" }}>
+                <button onClick={() => openLead("cornell_gap", { title: "See how RatingIQ closes this gap.", subtitle: "We'll show you live on your chain's actual data.", ctaLabel: "Book a Demo" })} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-200 hover:opacity-90" style={{ background: "var(--gold)", color: "#1C2A39" }}>
                   See how RatingIQ closes this gap
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-                </a>
+                </button>
               </div>
             </motion.div>
 
@@ -2300,7 +2305,7 @@ export default function HomeClient() {
 
                 <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }} className="mt-6">
                   <button
-                    onClick={() => setElaineModal(true)}
+                    onClick={() => openLead("elaine_feature", { variant: "elaine", ctaLabel: "See Elaine in Action" })}
                     className="px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-gold/30 flex items-center gap-2"
                     style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))", color: "#1C2A39" }}
                   >
@@ -2472,14 +2477,14 @@ export default function HomeClient() {
               <span className="bg-gradient-to-r from-gold via-gold-light to-gold-dark bg-clip-text text-transparent">actually telling you.</span>
             </h2>
             <p className="text-base text-muted mb-7">Under 5 minutes. No IT. No setup calls.</p>
-            <a
-              href="https://calendar.app.google/QywtyvvCugBR5U4n8"
+            <button
+              onClick={() => openLead("final_book_demo", { title: "See what your reviews are actually telling you.", subtitle: "Under 5 minutes. No IT. No setup calls.", ctaLabel: "Book a Demo" })}
               className="inline-flex items-center gap-2 px-7 py-3 rounded-xl font-semibold text-sm transition-all duration-300 hover:opacity-90 hover:shadow-lg"
               style={{ background: "#1C2A39", color: "#ECE8E2" }}
             >
               Book a Demo
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-            </a>
+            </button>
           </motion.div>
         </section>
 
@@ -2585,7 +2590,7 @@ export default function HomeClient() {
                         style={{ background: "var(--input-bg)", border: "1px solid var(--input-border)" }}
                       />
                       <button
-                        onClick={() => { if (faqForm.name && faqForm.email && faqForm.question) setFaqSent(true); }}
+                        onClick={() => { if (faqForm.name && faqForm.email && faqForm.question) { pushLeadToCRM({ name: faqForm.name, hotel: faqForm.hotel, email: faqForm.email, ctaSource: "faq_question", question: faqForm.question }); setFaqSent(true); } }}
                         className="w-full font-semibold rounded-lg px-4 py-2.5 text-sm transition-all duration-300 hover:opacity-90"
                         style={{ background: "#1C2A39", color: "#ECE8E2" }}
                       >
@@ -2647,111 +2652,15 @@ export default function HomeClient() {
         </div>
       </footer>
 
-      {/* Elaine Signup Modal */}
-      <AnimatePresence>
-        {elaineModal && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4"
-              style={{ background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)" }}
-              onClick={() => setElaineModal(false)}
-            />
-
-            {/* Modal */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 16 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 16 }}
-              transition={{ duration: 0.25 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
-            >
-              <div className="w-full max-w-md rounded-2xl overflow-hidden pointer-events-auto" style={{ background: "var(--background)", border: "1px solid var(--glass-border)", boxShadow: "0 0 60px rgba(201,168,106,0.15), 0 24px 48px rgba(0,0,0,0.3)" }}>
-
-                {/* Chat header */}
-                <div className="px-5 py-4 flex items-center justify-between border-b" style={{ borderColor: "var(--glass-border)", background: "rgba(201,168,106,0.03)" }}>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full overflow-hidden shrink-0" style={{ background: "linear-gradient(160deg, #C9A86A 0%, #8B6A3A 100%)", border: "2px solid rgba(201,168,106,0.4)" }}>
-                      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 1 C11 1 6 6 6 13 L6 21 C6 25 10 28 18 28 C26 28 30 25 30 21 L30 13 C30 6 25 1 18 1Z" fill="#2C1A0E" />
-                        <ellipse cx="18" cy="15" rx="6.5" ry="7.5" fill="#FDEBD0" />
-                        <path d="M4 36 C4 27 10 28 18 28 C26 28 32 27 32 36" fill="#FDEBD0" />
-                        <path d="M6 13 C6 7 10 2 18 1 C14 2 11 4 10 8 C8 6 6 9 6 13Z" fill="#1C0F06" />
-                        <path d="M30 13 C30 9 28 6 26 8 C25 4 22 2 18 1 C26 2 30 7 30 13Z" fill="#1C0F06" />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-foreground text-sm font-semibold" style={{ fontFamily: "var(--font-manrope)" }}>Elaine</div>
-                      <div className="text-[10px] flex items-center gap-1" style={{ color: "var(--success)" }}>
-                        <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: "var(--success)" }} />
-                        Ready to get started
-                      </div>
-                    </div>
-                  </div>
-                  <button onClick={() => setElaineModal(false)} className="text-muted hover:text-foreground transition-colors">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-                  </button>
-                </div>
-
-                {/* Elaine greeting bubble */}
-                <div className="px-5 pt-5 pb-2">
-                  <div className="flex items-end gap-2.5">
-                    <div className="w-6 h-6 rounded-full overflow-hidden shrink-0 mb-0.5" style={{ background: "linear-gradient(160deg, #C9A86A 0%, #8B6A3A 100%)" }}>
-                      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 1 C11 1 6 6 6 13 L6 21 C6 25 10 28 18 28 C26 28 30 25 30 21 L30 13 C30 6 25 1 18 1Z" fill="#2C1A0E" />
-                        <ellipse cx="18" cy="15" rx="6.5" ry="7.5" fill="#FDEBD0" />
-                        <path d="M4 36 C4 27 10 28 18 28 C26 28 32 27 32 36" fill="#FDEBD0" />
-                        <path d="M6 13 C6 7 10 2 18 1 C14 2 11 4 10 8 C8 6 6 9 6 13Z" fill="#1C0F06" />
-                        <path d="M30 13 C30 9 28 6 26 8 C25 4 22 2 18 1 C26 2 30 7 30 13Z" fill="#1C0F06" />
-                      </svg>
-                    </div>
-                    <div className="rounded-2xl rounded-tl-sm px-4 py-3 text-sm leading-relaxed max-w-[85%]" style={{ ...glass }}>
-                      Hi - I&apos;m Elaine. Tell us about your chain and we&apos;ll be in touch.<br />
-                      <span className="text-muted text-xs">We&apos;ll show you your data. Live.</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Form fields */}
-                <div className="px-5 pb-5 pt-3 space-y-3">
-                  {[
-                    { key: "name", label: "Full name", placeholder: "Your full name", type: "text" },
-                    { key: "hotel", label: "Hotel chain", placeholder: "Chain or company name", type: "text" },
-                    { key: "email", label: "Work email", placeholder: "you@yourchain.com", type: "email" },
-                  ].map((field) => (
-                    <div key={field.key}>
-                      <label className="text-xs text-muted font-medium mb-1.5 block">{field.label}</label>
-                      <input
-                        type={field.type}
-                        placeholder={field.placeholder}
-                        value={signupForm[field.key as keyof typeof signupForm]}
-                        onChange={e => setSignupForm(f => ({ ...f, [field.key]: e.target.value }))}
-                        className="w-full rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted outline-none transition-all duration-200"
-                        style={{ background: "var(--input-bg)", border: "1px solid var(--glass-border)" }}
-                        onFocus={e => { e.currentTarget.style.borderColor = "rgba(201,168,106,0.5)"; }}
-                        onBlur={e => { e.currentTarget.style.borderColor = "var(--glass-border)"; }}
-                      />
-                    </div>
-                  ))}
-
-                  <button
-                    className="w-full mt-2 py-3 rounded-xl font-semibold text-sm transition-all duration-200 hover:opacity-90 hover:scale-[1.01] flex items-center justify-center gap-2"
-                    style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))", color: "#1C2A39" }}
-                    onClick={() => { window.location.href = `/signup?name=${encodeURIComponent(signupForm.name)}&hotel=${encodeURIComponent(signupForm.hotel)}&email=${encodeURIComponent(signupForm.email)}`; }}
-                  >
-                    See Elaine in Action
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
-                  </button>
-                </div>
-
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      <SignupModal
+        open={leadModal.open}
+        onClose={closeLead}
+        ctaSource={leadModal.source}
+        variant={leadModal.variant}
+        title={leadModal.title}
+        subtitle={leadModal.subtitle}
+        ctaLabel={leadModal.ctaLabel}
+      />
     </div>
   );
 }

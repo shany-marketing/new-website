@@ -346,7 +346,7 @@ export default function RatingsClient() {
         </div>
       </main>
 
-      <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} title="Try Ratings." subtitle="$99/property/mo. Tell us about your chain and we'll set you up." ctaLabel="Try Ratings — $99/property/mo" />
+      <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} ctaSource="ratings_own_rating" title="Try Ratings." subtitle="$99/property/mo. Tell us about your chain and we'll set you up." ctaLabel="Try Ratings — $99/property/mo" />
     </div>
   );
 }
