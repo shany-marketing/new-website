@@ -1616,16 +1616,16 @@ const FEATURE_ANIMS = [<TopIssuesAnim key="a" />, <StatsAnim key="b" />, <AIResp
 /* ═══════════════ PARTNERS CAROUSEL ═══════════════ */
 
 const PARTNERS = [
-  { name: "Wyndham",       logo: "/partners/wyndham.png"       },
-  { name: "Ramada",        logo: "/partners/ramada.png"        },
-  { name: "Fattal",        logo: "/partners/fattal.png"        },
-  { name: "IDILIQ",        logo: "/partners/idiliq.png"        },
-  { name: "Isrotel",       logo: "/partners/isrotel.png"       },
-  { name: "Brown",         logo: "/partners/brown.png"         },
-  { name: "Dan",           logo: "/partners/dan.png"           },
-  { name: "Prima",         logo: "/partners/prima.png"         },
-  { name: "Israel Canada", logo: "/partners/israel-canada.png" },
-  { name: "Ceasar",        logo: "/partners/ceasar.png"        },
+  { name: "Wyndham",       logo: "/partners/wyndham.svg"       },
+  { name: "Ramada",        logo: "/partners/ramada.svg"        },
+  { name: "Fattal",        logo: "/partners/fattal.svg"        },
+  { name: "IDILIQ",        logo: "/partners/idiliq.svg"        },
+  { name: "Isrotel",       logo: "/partners/isrotel.svg"       },
+  { name: "Brown",         logo: "/partners/brown.svg"         },
+  { name: "Dan",           logo: "/partners/dan.svg"           },
+  { name: "Prima",         logo: "/partners/prima.svg"         },
+  { name: "Israel Canada", logo: "/partners/israel-canada.svg" },
+  { name: "Ceasar",        logo: "/partners/ceasar.svg"        },
 ];
 
 function PartnersCarousel() {
