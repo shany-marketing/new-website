@@ -144,6 +144,9 @@ h1, h2, h3 {
 .animate-marquee {
   animation: marquee 10s linear infinite;
 }
+.animate-marquee-partners {
+  animation: marquee 35s linear infinite;
+}
 
 /* Native <select> dropdowns — solid bg so options are readable */
 select {

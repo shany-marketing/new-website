@@ -1613,6 +1613,159 @@ function StatsAnim() {
 // filter([0,4,2]) preserves array order → renders as [0,2,4] = [topIssues, stats, aiResponse]
 const FEATURE_ANIMS = [<TopIssuesAnim key="a" />, <StatsAnim key="b" />, <AIResponseAnim key="c" />];
 
+/* ═══════════════ PARTNERS CAROUSEL ═══════════════ */
+
+const PARTNERS = [
+  { name: "Wyndham",       logo: "/partners/wyndham.png"       },
+  { name: "Ramada",        logo: "/partners/ramada.png"        },
+  { name: "Fattal",        logo: "/partners/fattal.png"        },
+  { name: "IDILIQ",        logo: "/partners/idiliq.png"        },
+  { name: "Isrotel",       logo: "/partners/isrotel.png"       },
+  { name: "Brown",         logo: "/partners/brown.png"         },
+  { name: "Dan",           logo: "/partners/dan.png"           },
+  { name: "Prima",         logo: "/partners/prima.png"         },
+  { name: "Israel Canada", logo: "/partners/israel-canada.png" },
+  { name: "Ceasar",        logo: "/partners/ceasar.png"        },
+];
+
+function PartnersCarousel() {
+  return (
+    <section className="py-10 px-4 md:px-8" style={{ borderTop: "1px solid var(--glass-border)", borderBottom: "1px solid var(--glass-border)" }}>
+      <p className="text-[10px] font-semibold uppercase tracking-widest text-center mb-8" style={{ color: "var(--muted)" }}>
+        Trusted by leading hotel chains
+      </p>
+      <div className="overflow-hidden relative" style={{ maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)" }}>
+        <div className="flex animate-marquee-partners" style={{ width: "max-content", gap: "64px" }}>
+          {[...PARTNERS, ...PARTNERS].map((p, i) => (
+            <div key={i} className="flex items-center justify-center shrink-0" style={{ height: "52px", minWidth: "100px" }}>
+              <img
+                src={p.logo}
+                alt={p.name}
+                style={{ maxHeight: "44px", maxWidth: "130px", width: "auto", height: "auto", objectFit: "contain", filter: "grayscale(100%)", opacity: 0.55 }}
+                onError={e => {
+                  const el = e.currentTarget as HTMLImageElement;
+                  el.style.display = "none";
+                  (el.nextSibling as HTMLElement).style.display = "block";
+                }}
+              />
+              <span className="hidden text-xs font-semibold" style={{ color: "var(--muted)" }}>{p.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════ TESTIMONIALS (exported for graveyard) ═══════════════ */
+
+export function TestimonialsSection() {
+  const [slide, setSlide] = useState(0);
+  const dir = useRef(1);
+  return (
+    <div className="max-w-5xl mx-auto">
+      <div className="text-center mb-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground" style={{ fontFamily: "var(--font-manrope)" }}>
+          The view from{" "}
+          <span className="bg-gradient-to-r from-gold via-gold-light to-gold-dark bg-clip-text text-transparent">the top floor.</span>
+        </h2>
+      </div>
+
+      {/* Desktop: 3-up */}
+      <div className="hidden md:block overflow-hidden" style={{ position: "relative", height: "340px" }}>
+        <AnimatePresence initial={false} custom={dir.current}>
+          <motion.div
+            key={slide}
+            custom={dir.current}
+            variants={{ enter: (d: number) => ({ x: d > 0 ? "100%" : "-100%" }), center: { x: 0 }, exit: (d: number) => ({ x: d > 0 ? "-100%" : "100%" }) }}
+            initial="enter" animate="center" exit="exit"
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="grid grid-cols-3 gap-5"
+            style={{ position: "absolute", top: 0, left: 0, right: 0 }}
+          >
+            {[0, 1, 2].map(offset => {
+              const t = TESTIMONIALS[(slide + offset) % TESTIMONIALS.length];
+              return (
+                <div key={offset} className="rounded-2xl p-5 flex flex-col" style={{ ...glass, height: "340px", overflow: "hidden" }}>
+                  <svg className="w-5 h-5 mb-2 opacity-20" fill="currentColor" viewBox="0 0 24 24" style={{ color: "var(--gold)" }}>
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zm-14.017 0v-7.391c0-5.704 3.731-9.57 8.983-10.609l.998 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H0z" />
+                  </svg>
+                  <p className="text-foreground italic text-sm leading-relaxed mb-3 flex-1">&ldquo;{t.quote}&rdquo;</p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0" style={{ background: "#1C2A39", color: "#ECE8E2" }}>{t.name[0]}</div>
+                    <div>
+                      <div className="text-foreground text-xs font-semibold">{t.name}</div>
+                      <div className="text-muted text-xs">{t.title}</div>
+                      <div className="text-muted text-xs">{t.hotel}</div>
+                      <GoldStars />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Mobile: 1-up */}
+      <div className="md:hidden" style={{ position: "relative", height: "340px", overflow: "hidden" }}>
+        <AnimatePresence initial={false} custom={dir.current}>
+          <motion.div
+            key={slide}
+            custom={dir.current}
+            variants={{ enter: (d: number) => ({ x: d > 0 ? "100%" : "-100%" }), center: { x: 0 }, exit: (d: number) => ({ x: d > 0 ? "-100%" : "100%" }) }}
+            initial="enter" animate="center" exit="exit"
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="rounded-2xl p-7"
+            style={{ ...glass, position: "absolute", inset: 0 }}
+          >
+            <svg className="w-7 h-7 absolute top-5 right-5 opacity-10" fill="currentColor" viewBox="0 0 24 24" style={{ color: "var(--gold)" }}>
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zm-14.017 0v-7.391c0-5.704 3.731-9.57 8.983-10.609l.998 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H0z" />
+            </svg>
+            <p className="text-foreground italic text-base leading-relaxed mb-5">&ldquo;{TESTIMONIALS[slide].quote}&rdquo;</p>
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold shrink-0" style={{ background: "#1C2A39", color: "#ECE8E2" }}>{TESTIMONIALS[slide].name[0]}</div>
+              <div>
+                <div className="text-foreground text-sm font-semibold">{TESTIMONIALS[slide].name}</div>
+                <div className="text-muted text-xs">{TESTIMONIALS[slide].title}</div>
+                <div className="text-muted text-xs">{TESTIMONIALS[slide].hotel}</div>
+                <GoldStars />
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Controls */}
+      <div className="flex items-center justify-center gap-4 mt-6">
+        <button onClick={() => { dir.current = -1; setSlide(s => (s - 1 + TESTIMONIALS.length) % TESTIMONIALS.length); }} className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110" style={{ border: "1px solid rgba(0,0,0,0.1)", color: "var(--muted)" }}>
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <div className="flex gap-2">
+          {TESTIMONIALS.map((_, i) => (
+            <button key={i} onClick={() => { dir.current = i > slide ? 1 : -1; setSlide(i); }} className="w-1.5 h-1.5 rounded-full transition-all duration-200" style={{ background: i === slide ? "var(--gold)" : "rgba(0,0,0,0.15)", transform: i === slide ? "scale(1.3)" : "scale(1)" }} />
+          ))}
+        </div>
+        <button onClick={() => { dir.current = 1; setSlide(s => (s + 1) % TESTIMONIALS.length); }} className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110" style={{ border: "1px solid rgba(0,0,0,0.1)", color: "var(--muted)" }}>
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+        </button>
+      </div>
+
+      {/* Omri's quote */}
+      <div className="mt-8 flex items-center gap-5 px-2">
+        <div className="w-12 h-12 rounded-full overflow-hidden shrink-0">
+          <img src="/omri-6.svg" alt="Omri Azulay" className="w-full h-full object-cover" style={{ objectPosition: "50% 50%" }} />
+        </div>
+        <p className="text-sm text-muted italic leading-relaxed">
+          &ldquo;You&apos;re already managing enough. We built RatingIQ to take reviews off your plate - and hand you what actually matters.&rdquo;
+          <br />
+          <span className="not-italic font-semibold text-foreground mt-1 inline-block">- Omri Azulay, Founder &amp; CEO</span>
+        </p>
+      </div>
+    </div>
+  );
+}
+
 /* ═══════════════ MAIN COMPONENT ═══════════════ */
 
 export default function HomeClient() {
@@ -1633,8 +1786,6 @@ export default function HomeClient() {
   const [faqSent, setFaqSent] = useState(false);
   const [chainScene, setChainScene] = useState(0);
   const [properties, setProperties] = useState(10);
-  const [testimonialSlide, setTestimonialSlide] = useState(0);
-  const testimonialDir = useRef(1);
   const capCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const openCap = () => {
@@ -2328,139 +2479,8 @@ export default function HomeClient() {
 
         {/* ──── ROI / IMPACT NUMBERS ──── HIDDEN (restore later) ──── */}
 
-        {/* ──── TESTIMONIALS ──── */}
-        <section className="py-8 md:py-12 px-4 md:px-8">
-          <div className="max-w-5xl mx-auto">
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground" style={{ fontFamily: "var(--font-manrope)" }}>
-                The view from{" "}
-                <span className="bg-gradient-to-r from-gold via-gold-light to-gold-dark bg-clip-text text-transparent">the top floor.</span>
-              </h2>
-            </motion.div>
-
-            {/* 3-up carousel - shows 3 at a time, arrows slide by 1 */}
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.5 }}>
-              {/* Desktop: sliding window of 3 */}
-              <div className="hidden md:block overflow-hidden" style={{ position: "relative", height: "340px" }}>
-                <AnimatePresence initial={false} custom={testimonialDir.current}>
-                  <motion.div
-                    key={testimonialSlide}
-                    custom={testimonialDir.current}
-                    variants={{
-                      enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%" }),
-                      center: { x: 0 },
-                      exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%" }),
-                    }}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="grid grid-cols-3 gap-5"
-                    style={{ position: "absolute", top: 0, left: 0, right: 0 }}
-                  >
-                    {[0, 1, 2].map(offset => {
-                      const t = TESTIMONIALS[(testimonialSlide + offset) % TESTIMONIALS.length];
-                      return (
-                        <div key={offset} className="rounded-2xl p-5 flex flex-col" style={{ ...glass, height: "340px", overflow: "hidden" }}>
-                          <svg className="w-5 h-5 mb-2 opacity-20" fill="currentColor" viewBox="0 0 24 24" style={{ color: "var(--gold)" }}>
-                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zm-14.017 0v-7.391c0-5.704 3.731-9.57 8.983-10.609l.998 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H0z" />
-                          </svg>
-                          <p className="text-foreground italic text-sm leading-relaxed mb-3 flex-1">&ldquo;{t.quote}&rdquo;</p>
-                          <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0" style={{ background: "#1C2A39", color: "#ECE8E2" }}>
-                              {t.name[0]}
-                            </div>
-                            <div>
-                              <div className="text-foreground text-xs font-semibold">{t.name}</div>
-                              <div className="text-muted text-xs">{t.title}</div>
-                              <div className="text-muted text-xs">{t.hotel}</div>
-                              <GoldStars />
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              {/* Mobile: 1 card at a time */}
-              <div className="md:hidden" style={{ position: "relative", height: "340px", overflow: "hidden" }}>
-                <AnimatePresence initial={false} custom={testimonialDir.current}>
-                  <motion.div
-                    key={testimonialSlide}
-                    custom={testimonialDir.current}
-                    variants={{
-                      enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%" }),
-                      center: { x: 0 },
-                      exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%" }),
-                    }}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="rounded-2xl p-7"
-                    style={{ ...glass, position: "absolute", inset: 0 }}
-                  >
-                    <svg className="w-7 h-7 absolute top-5 right-5 opacity-10" fill="currentColor" viewBox="0 0 24 24" style={{ color: "var(--gold)" }}>
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zm-14.017 0v-7.391c0-5.704 3.731-9.57 8.983-10.609l.998 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H0z" />
-                    </svg>
-                    <div>
-                      <p className="text-foreground italic text-base leading-relaxed mb-5">&ldquo;{TESTIMONIALS[testimonialSlide].quote}&rdquo;</p>
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold shrink-0" style={{ background: "#1C2A39", color: "#ECE8E2" }}>
-                          {TESTIMONIALS[testimonialSlide].name[0]}
-                        </div>
-                        <div>
-                          <div className="text-foreground text-sm font-semibold">{TESTIMONIALS[testimonialSlide].name}</div>
-                          <div className="text-muted text-xs">{TESTIMONIALS[testimonialSlide].title}</div>
-                          <div className="text-muted text-xs">{TESTIMONIALS[testimonialSlide].hotel}</div>
-                          <GoldStars />
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              {/* Controls */}
-              <div className="flex items-center justify-center gap-4 mt-6">
-                <button
-                  onClick={() => { testimonialDir.current = -1; setTestimonialSlide(s => (s - 1 + TESTIMONIALS.length) % TESTIMONIALS.length); }}
-                  className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-                  style={{ border: "1px solid rgba(0,0,0,0.1)", color: "var(--muted)" }}
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
-                </button>
-                <div className="flex gap-2">
-                  {TESTIMONIALS.map((_, i) => (
-                    <button key={i} onClick={() => { testimonialDir.current = i > testimonialSlide ? 1 : -1; setTestimonialSlide(i); }} className="w-1.5 h-1.5 rounded-full transition-all duration-200" style={{ background: i === testimonialSlide ? "var(--gold)" : "rgba(0,0,0,0.15)", transform: i === testimonialSlide ? "scale(1.3)" : "scale(1)" }} />
-                  ))}
-                </div>
-                <button
-                  onClick={() => { testimonialDir.current = 1; setTestimonialSlide(s => (s + 1) % TESTIMONIALS.length); }}
-                  className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-                  style={{ border: "1px solid rgba(0,0,0,0.1)", color: "var(--muted)" }}
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
-                </button>
-              </div>
-            </motion.div>
-
-            {/* Omri's quote */}
-            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }} className="mt-8 flex items-center gap-5 px-2">
-              <div className="w-12 h-12 rounded-full overflow-hidden shrink-0">
-                <img src="/omri-6.svg" alt="Omri Azulay" className="w-full h-full object-cover" style={{ objectPosition: "50% 50%" }} />
-              </div>
-              <p className="text-sm text-muted italic leading-relaxed">
-                &ldquo;You&apos;re already managing enough. We built RatingIQ to take reviews off your plate - and hand you what actually matters.&rdquo;
-                <br />
-                <span className="not-italic font-semibold text-foreground mt-1 inline-block">- Omri Azulay, Founder &amp; CEO</span>
-              </p>
-            </motion.div>
-
-          </div>
-        </section>
+        {/* ──── PARTNERS CAROUSEL ──── */}
+        <PartnersCarousel />
 
         {/* ──── FINAL CTA ──── */}
         <section className="py-10 md:py-14 px-4 md:px-8">
