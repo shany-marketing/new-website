@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { pushLeadToCRM } from "@/app/components/SignupModal";
 
 
 type State = "idle" | "loading" | "done" | "error";
@@ -24,6 +25,7 @@ export default function TalkNowPage() {
       });
 
       if (!res.ok) throw new Error();
+      pushLeadToCRM({ name, phone, hotel, email: "", ctaSource: "talk_now_cta" });
       setState("done");
     } catch {
       setState("error");
