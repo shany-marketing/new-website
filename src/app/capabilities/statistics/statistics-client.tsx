@@ -269,7 +269,7 @@ const FEATURES = [
   {
     id: "responserate",
     label: "Response Rate",
-    headline: "Response rate affects your platform ranking before a guest reads a single word.",
+    headline: "Response rate affects your Booking.com ranking before a guest reads a single word.",
     body: "Booking.com and Google both factor response rate into visibility. A chain that's slow to respond loses positioning even when its rating is solid. Track response rate and see exactly where the gap is.",
     detail: "Overall response rate, responded vs. unresponded counts.",
     visual: <ResponseRateVisual />,

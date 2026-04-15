@@ -13,7 +13,6 @@ import SignupModal, { pushLeadToCRM } from "@/app/components/SignupModal";
 const NAV_LINKS = [
   { label: "Why RatingIQ", href: "#why" },
   { label: "How It Works", href: "#how-it-works" },
-  { label: "Pricing", href: "/pricing" },
   { label: "FAQ", href: "#faq" },
 ];
 
@@ -2020,7 +2019,7 @@ export default function HomeClient() {
         <div className="py-5 px-4 md:px-8 border-y" style={{ borderColor: "var(--glass-border)" }}>
           <div className="max-w-5xl mx-auto flex justify-center">
             <div className="flex flex-col sm:flex-row items-center gap-3">
-              <p className="text-base font-medium text-muted">Your rating could be higher. Do you know what&apos;s holding it back?</p>
+              <p className="text-base font-medium text-muted">Your Booking.com rating could be higher. Do you know what&apos;s holding it back?</p>
               <button
                 onClick={() => openLead("cta_strip", { title: "Let us tell you.", subtitle: "We'll show you exactly what's holding your rating back.", ctaLabel: "Show Me" })}
                 className="text-sm font-semibold px-4 py-2 rounded-lg transition-all hover:scale-[1.02] whitespace-nowrap"
@@ -2653,7 +2652,7 @@ export default function HomeClient() {
               <div className="flex flex-col gap-2">
                 <a href="#features" className="text-muted text-sm hover:text-foreground transition-colors">Features</a>
                 <a href="#how-it-works" className="text-muted text-sm hover:text-foreground transition-colors">How It Works</a>
-                <Link href="/pricing" className="text-muted text-sm hover:text-foreground transition-colors">Pricing</Link>
+
                 <a href="#faq" className="text-muted text-sm hover:text-foreground transition-colors">FAQ</a>
               </div>
             </div>

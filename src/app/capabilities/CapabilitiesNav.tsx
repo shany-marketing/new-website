@@ -11,7 +11,7 @@ type Props = {
 };
 
 const TIERS = [
-  { id: "statistics" as Tier, label: "Know Your Guests", sub: "All platforms, all data, one place", badge: "Free", badgeStyle: { color: "var(--muted)", background: "var(--input-bg)" } },
+  { id: "statistics" as Tier, label: "Know Your Guests", sub: "Booking.com, Google & more — one place", badge: "Free", badgeStyle: { color: "var(--muted)", background: "var(--input-bg)" } },
   { id: "ratings" as Tier, label: "Own Your Rating", sub: "See exactly where your rating stands and why", badge: "Tier 1", badgeStyle: { color: "var(--gold)", background: "rgba(201,168,106,0.1)" } },
   { id: "premium" as Tier, label: "Drive Your Revenue", sub: "Insights, actions, reviews & Elaine", badge: "Premium", badgeStyle: { color: "#1C2A39", background: "var(--gold)" } },
 ];
