@@ -22,6 +22,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "RatingIQ | From reviews to revenue",
   description: "RatingIQ shows hotels what's driving their rating, what to fix first, and how it connects to ADR and RevPAR. Rating Intelligence + Reputation QA for Hotels.",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
