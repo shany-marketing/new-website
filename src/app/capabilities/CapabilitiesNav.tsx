@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
 
 type Tier = "statistics" | "ratings" | "premium";
@@ -26,6 +27,7 @@ export default function CapabilitiesNav({ activeTier, cta }: Props) {
   const [capOpen, setCapOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const { resolvedTheme } = useTheme();
 
   const openCap = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -41,7 +43,7 @@ export default function CapabilitiesNav({ activeTier, cta }: Props) {
 
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
-          <img src="/logo.svg" alt="RatingIQ" style={{ height: "72px", width: "auto" }} />
+          <img src={resolvedTheme === "dark" ? "/logo-white.svg" : "/logo.svg"} alt="RatingIQ" style={{ height: "72px", width: "auto" }} />
         </Link>
 
         {/* Desktop links */}
