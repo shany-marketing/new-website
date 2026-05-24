@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { sendEmail } from "@/lib/email";
 
 export async function POST(req: NextRequest) {
-  const { name, hotel, email, phone, ctaSource } = await req.json();
+  const { name, hotel, email, phone, ctaSource, question } = await req.json();
 
   if (!name || !email) {
     return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
@@ -39,6 +39,11 @@ export async function POST(req: NextRequest) {
         <tr>
           <td style="padding: 10px 0; border-bottom: 1px solid #e0dbd4; font-size: 13px; color: #516B84; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Phone</td>
           <td style="padding: 10px 0; border-bottom: 1px solid #e0dbd4; font-size: 15px; color: #1C2A39; font-weight: 600;"><a href="tel:${phone}" style="color: #1C2A39; text-decoration: none;">${phone}</a></td>
+        </tr>` : ""}
+        ${question ? `
+        <tr>
+          <td style="padding: 10px 0; border-bottom: 1px solid #e0dbd4; font-size: 13px; color: #516B84; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Question</td>
+          <td style="padding: 10px 0; border-bottom: 1px solid #e0dbd4; font-size: 15px; color: #1C2A39;">${question}</td>
         </tr>` : ""}
         <tr>
           <td style="padding: 10px 0; border-bottom: 1px solid #e0dbd4; font-size: 13px; color: #516B84; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">CTA</td>

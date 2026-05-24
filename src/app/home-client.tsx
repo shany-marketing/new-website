@@ -2619,7 +2619,17 @@ export default function HomeClient() {
                         style={{ background: "var(--input-bg)", border: "1px solid var(--input-border)" }}
                       />
                       <button
-                        onClick={() => { if (faqForm.name && faqForm.email && faqForm.question) { pushLeadToCRM({ name: faqForm.name, hotel: faqForm.hotel, email: faqForm.email, phone: faqForm.phone, ctaSource: "faq_question", question: faqForm.question }); setFaqSent(true); } }}
+                        onClick={() => {
+                          if (faqForm.name && faqForm.email && faqForm.question) {
+                            pushLeadToCRM({ name: faqForm.name, hotel: faqForm.hotel, email: faqForm.email, phone: faqForm.phone, ctaSource: "faq_question", question: faqForm.question });
+                            fetch("/api/lead-notify", {
+                              method: "POST",
+                              headers: { "Content-Type": "application/json" },
+                              body: JSON.stringify({ name: faqForm.name, hotel: faqForm.hotel, email: faqForm.email, phone: faqForm.phone, ctaSource: "faq_question", question: faqForm.question }),
+                            }).catch(() => {});
+                            setFaqSent(true);
+                          }
+                        }}
                         className="w-full font-semibold rounded-lg px-4 py-2.5 text-sm transition-all duration-300 hover:opacity-90"
                         style={{ background: "#1C2A39", color: "#ECE8E2" }}
                       >
