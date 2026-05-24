@@ -105,6 +105,11 @@ export default function SignupModal({
   const handleSubmit = () => {
     if (!form.name || !form.hotel || !form.email) return;
     pushLeadToCRM({ name: form.name, hotel: form.hotel, email: form.email, phone: form.phone, ctaSource });
+    fetch("/api/lead-notify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: form.name, hotel: form.hotel, email: form.email, phone: form.phone, ctaSource }),
+    }).catch(() => {});
     setSent(true);
   };
 
