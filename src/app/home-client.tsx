@@ -1625,6 +1625,7 @@ const PARTNERS = [
   { name: "Prima",         logo: "/partners/prima.png"         },
   { name: "Israel Canada", logo: "/partners/israel-canada.png" },
   { name: "Ceasar",        logo: "/partners/ceasar.png"        },
+  { name: "Play Hotels",   logo: "/partners/play-hotels.png"   },
 ];
 
 function PartnersCarousel() {
