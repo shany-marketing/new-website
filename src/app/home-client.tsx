@@ -1623,7 +1623,7 @@ const PARTNERS = [
   { name: "Brown",         logo: "/partners/brown.png"         },
   { name: "Dan",           logo: "/partners/dan.png"           },
   { name: "Prima",         logo: "/partners/prima.png"         },
-  { name: "Israel Canada", logo: "/partners/israel-canada.png" },
+  { name: "Israel Canada", logo: "/partners/israel-canada.png", scale: 1.5 },
   { name: "Ceasar",        logo: "/partners/ceasar.png"        },
   { name: "Play Hotels",   logo: "/partners/play-hotels.png"   },
 ];
@@ -1641,7 +1641,7 @@ function PartnersCarousel() {
               <img
                 src={p.logo}
                 alt={p.name}
-                style={{ maxHeight: "64px", maxWidth: "160px", width: "auto", height: "auto", objectFit: "contain" }}
+                style={{ maxHeight: "64px", maxWidth: "160px", width: "auto", height: "auto", objectFit: "contain", transform: (p as any).scale ? `scale(${(p as any).scale})` : undefined }}
                 onError={e => {
                   const el = e.currentTarget as HTMLImageElement;
                   el.style.display = "none";
