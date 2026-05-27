@@ -1829,7 +1829,8 @@ export default function HomeClient() {
           borderColor: "var(--glass-border)",
         } : undefined}
       >
-        <nav className="max-w-6xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
+        <nav className="px-4 md:px-8">
+          <div className="max-w-6xl mx-auto h-20 flex items-center justify-between">
           <Link href="/">
             <img
               src={resolvedTheme === "dark" ? "/logo-white.svg" : "/logo.svg"}
@@ -1902,6 +1903,7 @@ export default function HomeClient() {
               <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             )}
           </button>
+          </div>
         </nav>
 
         {/* Mobile dropdown */}

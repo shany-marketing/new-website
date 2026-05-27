@@ -10,8 +10,7 @@ type Props = {
 
 const glass = {
   background: "var(--nav-scrolled-bg)",
-  backdropFilter: "blur(16px)",
-  border: "1px solid var(--glass-border)",
+  backdropFilter: "blur(12px)",
 };
 
 export default function CapabilitiesNav({ cta }: Props) {
@@ -29,8 +28,9 @@ export default function CapabilitiesNav({ cta }: Props) {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b" style={{ ...glass, boxShadow: "0 1px 0 var(--glass-border)" }}>
-      <nav className="max-w-6xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b" style={{ ...glass, borderColor: "var(--glass-border)" }}>
+      <nav className="px-4 md:px-8">
+        <div className="max-w-6xl mx-auto h-20 flex items-center justify-between">
 
         {/* Logo */}
         <Link href="/">
@@ -109,6 +109,7 @@ export default function CapabilitiesNav({ cta }: Props) {
             : <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
           }
         </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
