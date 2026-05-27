@@ -103,7 +103,7 @@ export default function PricingPage() {
     <div className="min-h-screen" style={{ background: "var(--page-gradient)" }}>
 
       <CapabilitiesNav
-        activeTier={null}
+       
         cta={{ text: "Book a Demo", href: "#", onClick: () => openSignup("Book a Demo", "pricing_nav_demo") }}
       />
 

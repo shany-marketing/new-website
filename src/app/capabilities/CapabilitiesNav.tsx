@@ -4,18 +4,9 @@ import { useState, useRef } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
-type Tier = "statistics" | "ratings" | "premium";
-
 type Props = {
-  activeTier?: Tier | null;
   cta: { text: string; href: string; external?: boolean; onClick?: () => void };
 };
-
-const TIERS = [
-  { id: "statistics" as Tier, label: "Know Your Guests", sub: "Booking.com, Google & more — one place", badge: "Free", badgeStyle: { color: "var(--muted)", background: "var(--input-bg)" } },
-  { id: "ratings" as Tier, label: "Own Your Rating", sub: "See exactly where your rating stands and why", badge: "Tier 1", badgeStyle: { color: "var(--gold)", background: "rgba(201,168,106,0.1)" } },
-  { id: "premium" as Tier, label: "Drive Your Revenue", sub: "Insights, actions, reviews & Elaine", badge: "Premium", badgeStyle: { color: "#1C2A39", background: "var(--gold)" } },
-];
 
 const glass = {
   background: "var(--nav-scrolled-bg)",
@@ -23,7 +14,7 @@ const glass = {
   border: "1px solid var(--glass-border)",
 };
 
-export default function CapabilitiesNav({ activeTier, cta }: Props) {
+export default function CapabilitiesNav({ cta }: Props) {
   const [capOpen, setCapOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -60,25 +51,30 @@ export default function CapabilitiesNav({ activeTier, cta }: Props) {
 
             {capOpen && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50" style={{ minWidth: "260px" }} onMouseEnter={openCap} onMouseLeave={closeCap}>
-              <div className="rounded-2xl py-2" style={{ ...glass, boxShadow: "0 20px 40px rgba(0,0,0,0.25)" }}>
-                {TIERS.map(t => (
-                  <Link
-                    key={t.id}
-                    href={`/capabilities/${t.id}`}
-                    className="block px-4 py-3 rounded-xl mx-1 transition-colors"
-                    style={activeTier === t.id ? { background: "rgba(201,168,106,0.07)" } : {}}
-                    onMouseEnter={e => { if (activeTier !== t.id) (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.04)"; }}
-                    onMouseLeave={e => { if (activeTier !== t.id) (e.currentTarget as HTMLAnchorElement).style.background = ""; }}
-                  >
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <span className="text-xs font-bold px-1.5 py-0.5 rounded-full" style={t.badgeStyle}>{t.badge}</span>
-                      <span className="text-sm font-semibold text-foreground">{t.label}</span>
-                      {activeTier === t.id && <span className="ml-auto text-[9px]" style={{ color: "var(--gold)" }}>Current</span>}
+                <div className="rounded-2xl py-2" style={{ ...glass, boxShadow: "0 20px 40px rgba(0,0,0,0.25)" }}>
+                  <Link href="/capabilities/statistics" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
+                    <div className="flex items-center gap-2 mb-0.5 flex-nowrap">
+                      <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap" style={{ color: "var(--muted)", background: "var(--input-bg)" }}>Free</span>
+                      <span className="text-sm font-semibold text-foreground">Know Your Guests</span>
                     </div>
-                    <p className="text-xs text-muted">{t.sub}</p>
+                    <p className="text-xs text-muted">All platforms, all data, one place</p>
                   </Link>
-                ))}
-              </div>
+                  <Link href="/capabilities/ratings" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
+                    <div className="flex items-center gap-2 mb-0.5 flex-nowrap">
+                      <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap" style={{ color: "var(--gold)", background: "rgba(201,168,106,0.1)" }}>Tier 1</span>
+                      <span className="text-sm font-semibold text-foreground">Own Your Rating</span>
+                    </div>
+                    <p className="text-xs text-muted">See exactly where your rating stands and why</p>
+                  </Link>
+                  <div className="my-1 mx-4 h-px" style={{ background: "var(--glass-border)" }} />
+                  <Link href="/capabilities/premium" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
+                    <div className="flex items-center gap-2 mb-0.5 flex-nowrap">
+                      <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap" style={{ color: "#1C2A39", background: "var(--gold)" }}>Premium</span>
+                      <span className="text-sm font-semibold text-foreground">Drive Your Revenue</span>
+                    </div>
+                    <p className="text-xs text-muted">Insights, actions, reviews & Elaine</p>
+                  </Link>
+                </div>
               </div>
             )}
           </div>
@@ -118,12 +114,18 @@ export default function CapabilitiesNav({ activeTier, cta }: Props) {
       {mobileOpen && (
         <div className="md:hidden border-t px-4 pb-5 pt-3" style={{ ...glass, borderColor: "var(--glass-border)" }}>
           <p className="text-[10px] font-semibold uppercase tracking-wider text-muted mb-2">Capabilities</p>
-          {TIERS.map(t => (
-            <Link key={t.id} href={`/capabilities/${t.id}`} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 py-2.5 border-b" style={{ borderColor: "var(--glass-border)" }}>
-              <span className="text-xs font-bold px-1.5 py-0.5 rounded-full" style={t.badgeStyle}>{t.badge}</span>
-              <span className="text-sm font-medium" style={{ color: activeTier === t.id ? "var(--gold)" : "var(--foreground)" }}>{t.label}</span>
-            </Link>
-          ))}
+          <Link href="/capabilities/statistics" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 py-2.5 border-b" style={{ borderColor: "var(--glass-border)" }}>
+            <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full" style={{ color: "var(--muted)", background: "var(--input-bg)" }}>Free</span>
+            <span className="text-sm font-medium text-foreground">Know Your Guests</span>
+          </Link>
+          <Link href="/capabilities/ratings" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 py-2.5 border-b" style={{ borderColor: "var(--glass-border)" }}>
+            <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full" style={{ color: "var(--gold)", background: "rgba(201,168,106,0.1)" }}>Tier 1</span>
+            <span className="text-sm font-medium text-foreground">Own Your Rating</span>
+          </Link>
+          <Link href="/capabilities/premium" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 py-2.5 border-b" style={{ borderColor: "var(--glass-border)" }}>
+            <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full" style={{ color: "#1C2A39", background: "var(--gold)" }}>Premium</span>
+            <span className="text-sm font-medium text-foreground">Drive Your Revenue</span>
+          </Link>
           <div className="flex flex-col gap-1 mt-3">
             <a href="/#how-it-works" onClick={() => setMobileOpen(false)} className="py-2.5 text-sm text-muted">How It Works</a>
             <a href="/pricing" onClick={() => setMobileOpen(false)} className="py-2.5 text-sm text-muted">Pricing</a>

@@ -290,7 +290,7 @@ export default function StatisticsClient() {
 
   return (
     <div className="min-h-screen" style={{ background: "var(--page-gradient)" }}>
-      <CapabilitiesNav activeTier="statistics" cta={{ text: "Start Free", href: "/signup", onClick: () => setSignupOpen(true) }} />
+      <CapabilitiesNav cta={{ text: "Start Free", href: "/signup", onClick: () => setSignupOpen(true) }} />
 
       <main className="pt-28 pb-24 px-4 md:px-8">
         <div className="max-w-5xl mx-auto">

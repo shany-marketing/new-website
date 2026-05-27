@@ -268,7 +268,7 @@ export default function PremiumClient() {
 
   return (
     <div className="min-h-screen" style={{ background: "var(--page-gradient)" }}>
-      <CapabilitiesNav activeTier="premium" cta={{ text: "Book a Demo", href: "https://calendar.app.google/QywtyvvCugBR5U4n8", onClick: () => setDemoOpen(true) }} />
+      <CapabilitiesNav cta={{ text: "Book a Demo", href: "https://calendar.app.google/QywtyvvCugBR5U4n8", onClick: () => setDemoOpen(true) }} />
 
       <main className="pt-28 pb-24 px-4 md:px-8">
         <div className="max-w-5xl mx-auto">

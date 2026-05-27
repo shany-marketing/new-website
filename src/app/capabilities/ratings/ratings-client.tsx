@@ -234,7 +234,7 @@ export default function RatingsClient() {
 
   return (
     <div className="min-h-screen" style={{ background: "var(--page-gradient)" }}>
-      <CapabilitiesNav activeTier="ratings" cta={{ text: "Try Ratings — $99/mo", href: "/signup", onClick: () => setSignupOpen(true) }} />
+      <CapabilitiesNav cta={{ text: "Try Ratings — $99/mo", href: "/signup", onClick: () => setSignupOpen(true) }} />
 
       <main className="pt-28 pb-24 px-4 md:px-8">
         <div className="max-w-5xl mx-auto">
