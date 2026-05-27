@@ -33,8 +33,8 @@ export default function CapabilitiesNav({ cta }: Props) {
       <nav className="max-w-6xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center shrink-0">
-          <img src={resolvedTheme === "dark" ? "/logo-white.svg" : "/logo.svg"} alt="RatingIQ" style={{ height: "72px", width: "auto" }} />
+        <Link href="/">
+          <img src={resolvedTheme === "dark" ? "/logo-white.svg" : "/logo.svg"} alt="RatingIQ" style={{ height: "72px", width: "auto", objectFit: "contain" }} />
         </Link>
 
         {/* Desktop links */}
