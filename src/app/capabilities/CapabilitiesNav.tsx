@@ -42,7 +42,7 @@ export default function CapabilitiesNav({ cta }: Props) {
 
           {/* Capabilities dropdown */}
           <div className="relative" onMouseEnter={openCap} onMouseLeave={closeCap}>
-            <button className="flex items-center gap-1 text-sm font-medium transition-colors duration-200" style={{ color: "var(--foreground)" }}>
+            <button className="flex items-center gap-1 text-sm text-muted hover:text-foreground transition-colors duration-200">
               What We Do
               <svg className={`w-3 h-3 transition-transform duration-200 ${capOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
