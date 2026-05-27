@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
@@ -8,16 +8,19 @@ type Props = {
   cta: { text: string; href: string; external?: boolean; onClick?: () => void };
 };
 
-const glass = {
-  background: "var(--nav-scrolled-bg)",
-  backdropFilter: "blur(12px)",
-};
-
 export default function CapabilitiesNav({ cta }: Props) {
   const [capOpen, setCapOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { resolvedTheme } = useTheme();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const openCap = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -28,7 +31,10 @@ export default function CapabilitiesNav({ cta }: Props) {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b" style={{ ...glass, borderColor: "var(--glass-border)" }}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "border-b" : "border-b border-transparent"}`}
+      style={scrolled ? { background: "var(--nav-scrolled-bg)", backdropFilter: "blur(12px)", borderColor: "var(--glass-border)" } : undefined}
+    >
       <nav className="px-4 md:px-8">
         <div className="max-w-6xl mx-auto h-20 flex items-center justify-between">
 
@@ -51,7 +57,7 @@ export default function CapabilitiesNav({ cta }: Props) {
 
             {capOpen && (
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50" style={{ minWidth: "260px" }} onMouseEnter={openCap} onMouseLeave={closeCap}>
-                <div className="rounded-2xl py-2" style={{ ...glass, boxShadow: "0 20px 40px rgba(0,0,0,0.25)" }}>
+                <div className="rounded-2xl py-2" style={{ background: "var(--nav-scrolled-bg)", backdropFilter: "blur(12px)", boxShadow: "0 20px 40px rgba(0,0,0,0.25)" }}>
                   <Link href="/capabilities/statistics" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
                     <div className="flex items-center gap-2 mb-0.5 flex-nowrap">
                       <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap" style={{ color: "var(--muted)", background: "var(--input-bg)" }}>Free</span>
@@ -114,7 +120,7 @@ export default function CapabilitiesNav({ cta }: Props) {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t px-4 pb-5 pt-3" style={{ ...glass, borderColor: "var(--glass-border)" }}>
+        <div className="md:hidden border-t px-4 pb-5 pt-3" style={{ background: "var(--nav-scrolled-bg)", backdropFilter: "blur(12px)", borderColor: "var(--glass-border)" }}>
           <p className="text-[10px] font-semibold uppercase tracking-wider text-muted mb-2">Capabilities</p>
           <Link href="/capabilities/statistics" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 py-2.5 border-b" style={{ borderColor: "var(--glass-border)" }}>
             <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full" style={{ color: "var(--muted)", background: "var(--input-bg)" }}>Free</span>
