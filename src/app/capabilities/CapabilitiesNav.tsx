@@ -79,8 +79,9 @@ export default function CapabilitiesNav({ cta }: Props) {
             )}
           </div>
 
+          <a href="/#why" className="text-sm text-muted hover:text-foreground transition-colors duration-200">Why RatingIQ</a>
           <a href="/#how-it-works" className="text-sm text-muted hover:text-foreground transition-colors duration-200">How It Works</a>
-          <a href="/pricing" className="text-sm text-muted hover:text-foreground transition-colors duration-200">Pricing</a>
+          <a href="/#faq" className="text-sm text-muted hover:text-foreground transition-colors duration-200">FAQ</a>
         </div>
 
         {/* Right side */}
@@ -127,8 +128,9 @@ export default function CapabilitiesNav({ cta }: Props) {
             <span className="text-sm font-medium text-foreground">Drive Your Revenue</span>
           </Link>
           <div className="flex flex-col gap-1 mt-3">
+            <a href="/#why" onClick={() => setMobileOpen(false)} className="py-2.5 text-sm text-muted">Why RatingIQ</a>
             <a href="/#how-it-works" onClick={() => setMobileOpen(false)} className="py-2.5 text-sm text-muted">How It Works</a>
-            <a href="/pricing" onClick={() => setMobileOpen(false)} className="py-2.5 text-sm text-muted">Pricing</a>
+            <a href="/#faq" onClick={() => setMobileOpen(false)} className="py-2.5 text-sm text-muted">FAQ</a>
             <Link href="/login" onClick={() => setMobileOpen(false)} className="py-2.5 text-sm text-muted">Log In</Link>
           </div>
           <div className="mt-3 pt-3 border-t" style={{ borderColor: "var(--glass-border)" }}>
