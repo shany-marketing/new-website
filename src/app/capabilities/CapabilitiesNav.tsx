@@ -58,14 +58,14 @@ export default function CapabilitiesNav({ cta }: Props) {
                   <div className="rounded-2xl py-2" style={{ background: "var(--nav-scrolled-bg)", backdropFilter: "blur(12px)", boxShadow: "0 20px 40px rgba(0,0,0,0.25)" }}>
                     <Link href="/pulse" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
                       <div className="flex items-center gap-2 mb-0.5 flex-nowrap">
-                        <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap" style={{ color: "var(--muted)", background: "var(--input-bg)" }}>Free</span>
+                        <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap" style={{ color: "var(--gold)", background: "rgba(201,168,106,0.1)", border: "1px solid rgba(201,168,106,0.2)" }}>Pulse</span>
                         <span className="text-sm font-semibold text-foreground">Know Your Guests</span>
                       </div>
                       <p className="text-xs text-muted">All platforms, all data, one place</p>
                     </Link>
                     <Link href="/radar" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
                       <div className="flex items-center gap-2 mb-0.5 flex-nowrap">
-                        <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap" style={{ color: "var(--gold)", background: "rgba(201,168,106,0.1)" }}>Tier 1</span>
+                        <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap" style={{ color: "var(--gold)", background: "rgba(201,168,106,0.1)", border: "1px solid rgba(201,168,106,0.2)" }}>Radar</span>
                         <span className="text-sm font-semibold text-foreground">Own Your Rating</span>
                       </div>
                       <p className="text-xs text-muted">See exactly where your rating stands and why</p>
