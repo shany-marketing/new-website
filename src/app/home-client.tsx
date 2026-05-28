@@ -10,11 +10,22 @@ import SignupModal, { pushLeadToCRM } from "@/app/components/SignupModal";
 
 /* ─────────────── constants ─────────────── */
 
-const NAV_LINKS = [
+const NAV_LINKS: { label: string; href: string; centerScroll?: boolean }[] = [
   { label: "Why RatingIQ", href: "#why" },
-  { label: "How It Works", href: "#how-it-works" },
+  { label: "How It Works", href: "#how-it-works", centerScroll: true },
   { label: "FAQ", href: "#faq" },
 ];
+
+const scrollToCenter = (id: string) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const navH = 80;
+  const elTop = el.getBoundingClientRect().top + window.scrollY;
+  const elH = el.offsetHeight;
+  const vpH = window.innerHeight;
+  const target = elTop - (vpH - navH) / 2 + elH / 2;
+  window.scrollTo({ top: target, behavior: "smooth" });
+};
 
 const PLATFORMS = [
   { label: "Booking.com", color: "#003580" },
@@ -1880,7 +1891,12 @@ export default function HomeClient() {
                 )}
               </div>
               {NAV_LINKS.map((l) => (
-                <a key={l.href} href={l.href} className="text-base text-muted hover:text-foreground transition-colors duration-200">{l.label}</a>
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={l.centerScroll ? (e) => { e.preventDefault(); scrollToCenter(l.href.slice(1)); } : undefined}
+                  className="text-base text-muted hover:text-foreground transition-colors duration-200"
+                >{l.label}</a>
               ))}
             </div>
 
@@ -1928,7 +1944,12 @@ export default function HomeClient() {
               </div>
             )}
             {NAV_LINKS.map((l) => (
-              <a key={l.href} href={l.href} onClick={closeMobileNav} className="block py-2.5 text-muted hover:text-foreground transition-colors">{l.label}</a>
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={l.centerScroll ? (e) => { e.preventDefault(); scrollToCenter(l.href.slice(1)); closeMobileNav(); } : closeMobileNav}
+                className="block py-2.5 text-muted hover:text-foreground transition-colors"
+              >{l.label}</a>
             ))}
             <div className="flex flex-col gap-2 mt-3 pt-3 border-t" style={{ borderColor: "var(--glass-border)" }}>
               <ThemeToggle className="self-start" />
