@@ -1,11 +1,5 @@
-import type { Metadata } from "next";
-import PremiumClient from "./premium-client";
-
-export const metadata: Metadata = {
-  title: "Premium | RatingIQ",
-  description: "AI-powered insights, Elaine AI analyst, automated responses, competitor benchmarking, and more. Everything your chain needs to turn reviews into revenue.",
-};
+import { redirect } from "next/navigation";
 
 export default function PremiumPage() {
-  return <PremiumClient />;
+  redirect("/premium");
 }

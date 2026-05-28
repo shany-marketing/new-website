@@ -131,7 +131,7 @@ const FEATURES = [
   {
     title: "See exactly what's hurting your rating",
     desc: "Exactly which factors are moving your ratings - across every property.",
-    href: "/capabilities/premium#insights",
+    href: "/premium#insights",
     topFeature: true,
     glow: "rgba(201,168,106,0.5)",
     glowBorder: "rgba(201,168,106,0.3)",
@@ -146,7 +146,7 @@ const FEATURES = [
   {
     title: "Fix less. Improve more.",
     desc: "80% of complaints come from 20% of issues. We show you which 20%.",
-    href: "/capabilities/premium#actions",
+    href: "/premium#actions",
     glow: "rgba(184,80,80,0.5)",
     glowBorder: "rgba(184,80,80,0.3)",
     iconBg: "rgba(184,80,80,0.08)",
@@ -160,7 +160,7 @@ const FEATURES = [
   {
     title: "Your rating, explained.",
     desc: "Platform by platform. Segment by segment. Month by month. The full picture of where your chain actually stands - and why.",
-    href: "/capabilities/premium#benchmark",
+    href: "/premium#benchmark",
     glow: "rgba(81,107,132,0.6)",
     glowBorder: "rgba(81,107,132,0.35)",
     iconBg: "rgba(81,107,132,0.08)",
@@ -174,7 +174,7 @@ const FEATURES = [
   {
     title: "An analyst who never sleeps",
     desc: "Ask anything about your chain. Get answers in seconds.",
-    href: "/capabilities/premium#elaine",
+    href: "/premium#elaine",
     glow: "rgba(74,143,107,0.5)",
     glowBorder: "rgba(74,143,107,0.3)",
     iconBg: "rgba(74,143,107,0.08)",
@@ -188,7 +188,7 @@ const FEATURES = [
   {
     title: "No review goes unanswered",
     desc: "Every review, every platform, right language - automatically. GMs stay focused.",
-    href: "/capabilities/premium#ai-responses",
+    href: "/premium#ai-responses",
     topFeature: true,
     glow: "rgba(120,100,200,0.5)",
     glowBorder: "rgba(120,100,200,0.3)",
@@ -203,7 +203,7 @@ const FEATURES = [
   {
     title: "Monday morning, already informed",
     desc: "The numbers that matter, before your Monday meeting.",
-    href: "/capabilities/premium#digest",
+    href: "/premium#digest",
     glow: "rgba(201,168,106,0.4)",
     glowBorder: "rgba(201,168,106,0.25)",
     iconBg: "rgba(201,168,106,0.06)",
@@ -231,7 +231,7 @@ const FEATURES = [
   {
     title: "Past the symptoms. Into the fix.",
     desc: "Root causes and fixes for every issue category - chain-wide.",
-    href: "/capabilities/premium#insights",
+    href: "/premium#insights",
     glow: "rgba(184,80,80,0.4)",
     glowBorder: "rgba(184,80,80,0.25)",
     iconBg: "rgba(184,80,80,0.06)",
@@ -1879,7 +1879,7 @@ export default function HomeClient() {
                         <p className="text-xs text-muted">See exactly where your rating stands and why</p>
                       </a>
                       <div className="my-1 mx-4 h-px" style={{ background: "var(--glass-border)" }} />
-                      <a href="/capabilities/premium" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
+                      <a href="/premium" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
                         <div className="flex items-center gap-2 mb-0.5 flex-nowrap">
                           <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap" style={{ color: "var(--navy-1, #1C2A39)", background: "var(--gold)" }}>Premium</span>
                           <span className="text-sm font-semibold text-foreground">Drive Your Revenue</span>
@@ -1940,7 +1940,7 @@ export default function HomeClient() {
               <div className="pl-4 pb-1 flex flex-col gap-1">
                 <a href="/pulse" onClick={closeMobileNav} className="py-2 text-sm text-muted hover:text-foreground transition-colors">Know Your Guests <span className="text-xs opacity-50">· Pulse</span></a>
                 <a href="/radar" onClick={closeMobileNav} className="py-2 text-sm text-muted hover:text-foreground transition-colors">Own Your Rating <span className="text-xs opacity-50">· Radar</span></a>
-                <a href="/capabilities/premium" onClick={closeMobileNav} className="py-2 text-sm text-muted hover:text-foreground transition-colors">Drive Your Revenue <span className="text-xs opacity-50">· Premium</span></a>
+                <a href="/premium" onClick={closeMobileNav} className="py-2 text-sm text-muted hover:text-foreground transition-colors">Drive Your Revenue <span className="text-xs opacity-50">· Premium</span></a>
               </div>
             )}
             {NAV_LINKS.map((l) => (
