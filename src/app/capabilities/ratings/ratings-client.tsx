@@ -234,7 +234,7 @@ export default function RatingsClient() {
 
   return (
     <div className="min-h-screen" style={{ background: "var(--page-gradient)" }}>
-      <CapabilitiesNav cta={{ text: "Try Ratings - $99/mo", href: "/signup", onClick: () => setSignupOpen(true) }} />
+      <CapabilitiesNav cta={{ text: "Try Radar - $99/mo", href: "/signup", onClick: () => setSignupOpen(true) }} />
 
       <main className="pt-28 pb-24 px-4 md:px-8">
         <div className="max-w-5xl mx-auto">
@@ -244,12 +244,8 @@ export default function RatingsClient() {
             <motion.div variants={fadeUp} transition={{ duration: 0.5 }}>
               <div className="flex flex-wrap items-center gap-3 mb-6">
                 <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full" style={{ color: "var(--gold)", background: "rgba(201,168,106,0.1)", border: "1px solid rgba(201,168,106,0.2)" }}>
-                  $99 · /property/month
+                  Radar - $99/property/month
                 </span>
-                <span className="text-xs text-muted">Part of the Capabilities suite →</span>
-                <Link href="/pulse" className="text-xs" style={{ color: "var(--gold)" }}>Know Your Guests</Link>
-                <span className="text-xs text-muted">·</span>
-                <Link href="/capabilities/premium" className="text-xs" style={{ color: "var(--gold)" }}>Drive Your Revenue</Link>
               </div>
             </motion.div>
 
@@ -267,7 +263,7 @@ export default function RatingsClient() {
 
             <motion.div variants={fadeUp} transition={{ duration: 0.5 }} className="flex flex-wrap gap-3">
               <button onClick={() => setSignupOpen(true)} className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90" style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))", color: "#1C2A39" }}>
-                Try Ratings - $99/property/mo
+                Try Radar - $99/property/mo
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
               </button>
               <Link href="/capabilities/premium" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:text-foreground" style={{ ...glass, color: "var(--muted)" }}>
@@ -290,7 +286,7 @@ export default function RatingsClient() {
                 className={`grid md:grid-cols-2 gap-10 md:gap-16 items-center ${i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}
               >
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "var(--gold)" }}>Ratings · {String(i + 1).padStart(2, "0")}</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "var(--gold)" }}>Radar · {String(i + 1).padStart(2, "0")}</p>
                   <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 leading-snug" style={{ fontFamily: "var(--font-manrope)" }}>{f.label}</h2>
                   <p className="text-lg font-medium text-foreground mb-3 leading-relaxed">{f.headline}</p>
                   <p className="text-muted leading-relaxed mb-5">{f.body}</p>
@@ -334,7 +330,7 @@ export default function RatingsClient() {
             <p className="text-muted mb-8 max-w-lg mx-auto">Start a free trial. No credit card. Cancel any time. See your chain&apos;s rating data the way it should be seen.</p>
             <div className="flex flex-wrap justify-center gap-3">
               <button onClick={() => setSignupOpen(true)} className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all hover:opacity-90" style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))", color: "#1C2A39" }}>
-                Try Ratings - $99/property/mo
+                Try Radar - $99/property/mo
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
               </button>
               <Link href="/capabilities/premium" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all hover:text-foreground" style={{ ...glass, color: "var(--muted)" }}>
@@ -346,7 +342,7 @@ export default function RatingsClient() {
         </div>
       </main>
 
-      <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} ctaSource="ratings_own_rating" title="Try Ratings." subtitle="$99/property/mo. Tell us about your chain and we'll set you up." ctaLabel="Try Ratings - $99/property/mo" />
+      <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} ctaSource="radar_own_rating" title="Try Radar." subtitle="$99/property/mo. Tell us about your chain and we'll set you up." ctaLabel="Try Radar - $99/property/mo" />
     </div>
   );
 }

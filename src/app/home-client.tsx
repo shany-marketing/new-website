@@ -217,7 +217,7 @@ const FEATURES = [
   {
     title: "Find patterns no GM can see",
     desc: "Slice by origin, room type, traveller type. The view only visible from the top.",
-    href: "/capabilities/ratings#segments",
+    href: "/radar#segments",
     glow: "rgba(81,107,132,0.5)",
     glowBorder: "rgba(81,107,132,0.3)",
     iconBg: "rgba(81,107,132,0.08)",
@@ -1871,7 +1871,7 @@ export default function HomeClient() {
                         </div>
                         <p className="text-xs text-muted">All platforms, all data, one place</p>
                       </a>
-                      <a href="/capabilities/ratings" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
+                      <a href="/radar" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
                         <div className="flex items-center gap-2 mb-0.5 flex-nowrap">
                           <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap" style={{ color: "var(--gold)", background: "rgba(201,168,106,0.1)" }}>Tier 1</span>
                           <span className="text-sm font-semibold text-foreground">Own Your Rating</span>
@@ -1939,7 +1939,7 @@ export default function HomeClient() {
             {capabilitiesMobileOpen && (
               <div className="pl-4 pb-1 flex flex-col gap-1">
                 <a href="/pulse" onClick={closeMobileNav} className="py-2 text-sm text-muted hover:text-foreground transition-colors">Know Your Guests <span className="text-xs opacity-50">· Free</span></a>
-                <a href="/capabilities/ratings" onClick={closeMobileNav} className="py-2 text-sm text-muted hover:text-foreground transition-colors">Own Your Rating <span className="text-xs opacity-50">· Tier 1</span></a>
+                <a href="/radar" onClick={closeMobileNav} className="py-2 text-sm text-muted hover:text-foreground transition-colors">Own Your Rating <span className="text-xs opacity-50">· Tier 1</span></a>
                 <a href="/capabilities/premium" onClick={closeMobileNav} className="py-2 text-sm text-muted hover:text-foreground transition-colors">Drive Your Revenue <span className="text-xs opacity-50">· Premium</span></a>
               </div>
             )}

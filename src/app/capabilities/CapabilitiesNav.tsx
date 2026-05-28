@@ -63,7 +63,7 @@ export default function CapabilitiesNav({ cta }: Props) {
                       </div>
                       <p className="text-xs text-muted">All platforms, all data, one place</p>
                     </Link>
-                    <Link href="/capabilities/ratings" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
+                    <Link href="/radar" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
                       <div className="flex items-center gap-2 mb-0.5 flex-nowrap">
                         <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap" style={{ color: "var(--gold)", background: "rgba(201,168,106,0.1)" }}>Tier 1</span>
                         <span className="text-sm font-semibold text-foreground">Own Your Rating</span>
@@ -127,7 +127,7 @@ export default function CapabilitiesNav({ cta }: Props) {
             <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full" style={{ color: "var(--muted)", background: "var(--input-bg)" }}>Free</span>
             <span className="text-sm font-medium text-foreground">Know Your Guests</span>
           </Link>
-          <Link href="/capabilities/ratings" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 py-2.5 border-b" style={{ borderColor: "var(--glass-border)" }}>
+          <Link href="/radar" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 py-2.5 border-b" style={{ borderColor: "var(--glass-border)" }}>
             <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full" style={{ color: "var(--gold)", background: "rgba(201,168,106,0.1)" }}>Tier 1</span>
             <span className="text-sm font-medium text-foreground">Own Your Rating</span>
           </Link>
