@@ -278,7 +278,7 @@ export default function PremiumClient() {
             <motion.div variants={fadeUp} transition={{ duration: 0.5 }}>
               <div className="flex flex-wrap items-center gap-3 mb-6">
                 <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full" style={{ color: "#1C2A39", background: "var(--gold)" }}>
-                  Chain Ready - Customized Price
+                  Premium - Customized Price
                 </span>
               </div>
             </motion.div>
