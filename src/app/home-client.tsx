@@ -2045,7 +2045,7 @@ export default function HomeClient() {
             {/* Header */}
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.5 }} className="mb-14">
               <span className="inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-5" style={{ color: "var(--danger)", background: "rgba(184,80,80,0.07)", border: "1px solid rgba(184,80,80,0.18)" }}>
-                Sound familiar?
+                Why RatingIQ
               </span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 max-w-2xl leading-tight" style={{ fontFamily: "var(--font-manrope)" }}>
                 Your GMs see the review.{" "}
@@ -2170,7 +2170,7 @@ export default function HomeClient() {
         </section>
 
         {/* ──── HOW IT WORKS ──── */}
-        <section id="how-it-works" className="py-14 md:py-16 px-4 md:px-8" style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+        <section id="how-it-works" className="pt-6 pb-14 md:pt-8 md:pb-16 px-4 md:px-8" style={{ borderTop: "1px solid rgba(0,0,0,0.06)", scrollMarginTop: "80px" }}>
           <div className="max-w-5xl mx-auto">
             <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-0">
 
