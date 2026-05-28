@@ -181,7 +181,7 @@ function PlatformHealthVisual() {
           <div key={r.platform} className="flex items-center justify-between py-2.5 border-b" style={{ borderColor: "var(--glass-border)" }}>
             <span className="text-xs font-medium text-foreground w-28">{r.platform}</span>
             <span className="text-xs" style={{ color: r.trend === "up" ? "var(--success)" : r.trend === "down" ? "var(--danger)" : "var(--muted)" }}>
-              {r.trend === "up" ? "▲" : r.trend === "down" ? "▼" : "—"}
+              {r.trend === "up" ? "▲" : r.trend === "down" ? "▼" : "-"}
             </span>
             <span className="text-xs" style={{ color: "var(--success)" }}>{r.count} reviews</span>
           </div>
@@ -237,16 +237,16 @@ const FEATURES = [
   {
     id: "volume",
     label: "Review Volume & Trends",
-    headline: "How much feedback is your chain generating — and is it growing?",
-    body: "Total review count across all properties and platforms. Monthly velocity, current vs. prior period, and which properties are falling behind. A chain with declining review volume is flying blind — you can't fix what you're not seeing.",
+    headline: "How much feedback is your chain generating - and is it growing?",
+    body: "Total review count across all properties and platforms. Monthly velocity, current vs. prior period, and which properties are falling behind. A chain with declining review volume is flying blind - you can't fix what you're not seeing.",
     detail: "Total count, monthly trend, velocity (current vs. prior period), review depth (short / medium / long / detailed), text vs. non-text split.",
     visual: <ReviewVolumeVisual />,
   },
   {
     id: "platforms",
     label: "Platform Mix",
-    headline: "Booking, Google, Expedia, TripAdvisor — where are your reviews actually coming from?",
-    body: "Most chains are over-indexed on one platform and underexposed on others. Platform mix shows you exactly where your review activity sits — so you know where your rating is being built and where it's being ignored.",
+    headline: "Booking, Google, Expedia, TripAdvisor - where are your reviews actually coming from?",
+    body: "Most chains are over-indexed on one platform and underexposed on others. Platform mix shows you exactly where your review activity sits - so you know where your rating is being built and where it's being ignored.",
     detail: "Review count and share % per platform, month-over-month volume change per platform.",
     visual: <PlatformMixVisual />,
   },
@@ -254,15 +254,15 @@ const FEATURES = [
     id: "demographics",
     label: "Guest Demographics",
     headline: "Know who's reviewing you before you try to improve what they think.",
-    body: "Traveler type (couples, solo, families, business) and guest origin (country/region). If 38% of your reviewers are couples and your couples score is dragging, that's not a footnote — that's a portfolio problem with a specific fix.",
+    body: "Traveler type (couples, solo, families, business) and guest origin (country/region). If 38% of your reviewers are couples and your couples score is dragging, that's not a footnote - that's a portfolio problem with a specific fix.",
     detail: "Traveler type breakdown, guest origin by country, room type, nights stayed.",
     visual: <DemographicsVisual />,
   },
   {
     id: "heatmap",
     label: "Review Heatmap",
-    headline: "When are guests leaving reviews — and when is your team most exposed?",
-    body: "A day-of-week × month grid shows your peak review periods at a glance. Know when volume spikes, know when coverage is thin. Response timing matters — this is where you plan for it.",
+    headline: "When are guests leaving reviews - and when is your team most exposed?",
+    body: "A day-of-week × month grid shows your peak review periods at a glance. Know when volume spikes, know when coverage is thin. Response timing matters - this is where you plan for it.",
     detail: "Day-of-week × 12-month grid, peak and low-volume period identification.",
     visual: <HeatmapVisual />,
   },
@@ -277,8 +277,8 @@ const FEATURES = [
   {
     id: "health",
     label: "Platform Health",
-    headline: "Month-over-month changes per platform — nothing slips past without a number.",
-    body: "Volume delta and trend direction — per platform, every month. Google dropping while Booking holds steady isn't noise. It's a signal. Platform health puts it in front of you.",
+    headline: "Month-over-month changes per platform - nothing slips past without a number.",
+    body: "Volume delta and trend direction - per platform, every month. Google dropping while Booking holds steady isn't noise. It's a signal. Platform health puts it in front of you.",
     detail: "Per-platform MoM volume change, trend direction.",
     visual: <PlatformHealthVisual />,
   },
@@ -318,12 +318,12 @@ export default function StatisticsClient() {
             </motion.p>
 
             <motion.p variants={fadeUp} transition={{ duration: 0.5 }} className="text-base text-muted max-w-2xl leading-relaxed mb-8">
-              Your full review picture starts here. Where reviews are coming from, who&apos;s writing them, when volume peaks, and whether your team is keeping up with responses. No AI, no prioritisation — just the clean, accurate numbers behind your chain&apos;s review activity. Every property.
+              Your full review picture starts here. Where reviews are coming from, who&apos;s writing them, when volume peaks, and whether your team is keeping up with responses. No AI, no prioritisation - just the clean, accurate numbers behind your chain&apos;s review activity. Every property.
             </motion.p>
 
             <motion.div variants={fadeUp} transition={{ duration: 0.5 }} className="flex flex-wrap gap-3">
               <button onClick={() => setSignupOpen(true)} className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90" style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))", color: "#1C2A39" }}>
-                Start Free — No Credit Card
+                Start Free - No Credit Card
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
               </button>
               <Link href="/capabilities/ratings" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:text-foreground" style={{ ...glass, color: "var(--muted)" }}>

@@ -148,7 +148,7 @@ function SegmentDrillVisual() {
         ))}
       </div>
       <div className="mt-4 pt-3 border-t" style={{ borderColor: "var(--glass-border)" }}>
-        <p className="text-[10px]" style={{ color: "var(--danger)" }}>⚠ Families from UK scoring 1.5 pts below chain average — flagged</p>
+        <p className="text-[10px]" style={{ color: "var(--danger)" }}>⚠ Families from UK scoring 1.5 pts below chain average - flagged</p>
       </div>
     </div>
   );
@@ -190,7 +190,7 @@ const FEATURES = [
   {
     id: "overview",
     label: "Rating Overview",
-    headline: "Avg, median, latest — three numbers that tell you where your chain actually stands.",
+    headline: "Avg, median, latest - three numbers that tell you where your chain actually stands.",
     body: "One number isn't enough. The average hides outliers. The median shows what most guests actually experience. The latest tells you which direction you're moving. Together, they give you something a single score never can: context.",
     detail: "Avg rating (last 90 days), median rating (50th percentile), latest review score, per-property.",
     visual: <RatingOverviewVisual />,
@@ -198,8 +198,8 @@ const FEATURES = [
   {
     id: "platforms",
     label: "Per-Platform Ratings",
-    headline: "Your score on Booking, Google, Expedia, and TripAdvisor — side by side.",
-    body: "You don't have one rating. You have four. And they're not the same. A chain scoring 8.6 on Booking and 8.0 on Expedia has a problem worth investigating. Platform-level data shows you which audiences have the highest expectations — and which platforms you're underperforming on.",
+    headline: "Your score on Booking, Google, Expedia, and TripAdvisor - side by side.",
+    body: "You don't have one rating. You have four. And they're not the same. A chain scoring 8.6 on Booking and 8.0 on Expedia has a problem worth investigating. Platform-level data shows you which audiences have the highest expectations - and which platforms you're underperforming on.",
     detail: "Avg rating per platform, review count per platform, side-by-side gap analysis, trend per platform.",
     visual: <PlatformRatingsVisual />,
   },
@@ -207,7 +207,7 @@ const FEATURES = [
     id: "trend",
     label: "12-Month Rating Trend",
     headline: "Your current score means nothing without knowing which direction it's heading.",
-    body: "Up from 7.9 twelve months ago, or down from 8.7? That difference determines your next move. The trend is what separates a chain gaining ground from one quietly losing it — and 8.3 looks very different depending on which one you are.",
+    body: "Up from 7.9 twelve months ago, or down from 8.7? That difference determines your next move. The trend is what separates a chain gaining ground from one quietly losing it - and 8.3 looks very different depending on which one you are.",
     detail: "Monthly average rating chart (12-month lookback), month-over-month delta, trend direction.",
     visual: <TrendVisual />,
   },
@@ -215,7 +215,7 @@ const FEATURES = [
     id: "segments",
     label: "Static Breakdowns",
     headline: "Find the exact segment dragging your chain down.",
-    body: "Your 8.3 average is a blended number. Couples from Germany might be scoring 8.9 while UK families score 7.8. That gap doesn't show up in your headline rating — but it's real, and it's costing you bookings from a specific, trackable segment. These breakdowns surface it.",
+    body: "Your 8.3 average is a blended number. Couples from Germany might be scoring 8.9 while UK families score 7.8. That gap doesn't show up in your headline rating - but it's real, and it's costing you bookings from a specific, trackable segment. These breakdowns surface it.",
     detail: "Rating breakdowns by guest origin, traveler type, room type. Identify underperforming segments per property.",
     visual: <SegmentDrillVisual />,
   },
@@ -223,7 +223,7 @@ const FEATURES = [
     id: "combinations",
     label: "Guest Combinations",
     headline: "It's not just families scoring low. It's families from the UK. That specificity changes everything.",
-    body: "Guest combinations put origin, traveler type, and satisfaction in one table. When you can see that UK families are your lowest-scoring segment at 89 reviews a month, that's a fixable problem — not a vague trend.",
+    body: "Guest combinations put origin, traveler type, and satisfaction in one table. When you can see that UK families are your lowest-scoring segment at 89 reviews a month, that's a fixable problem - not a vague trend.",
     detail: "Origin + traveler type + rating + volume combinations. Ranked by rating and count. Per-property.",
     visual: <GuestCombinationsVisual />,
   },
@@ -234,7 +234,7 @@ export default function RatingsClient() {
 
   return (
     <div className="min-h-screen" style={{ background: "var(--page-gradient)" }}>
-      <CapabilitiesNav cta={{ text: "Try Ratings — $99/mo", href: "/signup", onClick: () => setSignupOpen(true) }} />
+      <CapabilitiesNav cta={{ text: "Try Ratings - $99/mo", href: "/signup", onClick: () => setSignupOpen(true) }} />
 
       <main className="pt-28 pb-24 px-4 md:px-8">
         <div className="max-w-5xl mx-auto">
@@ -262,12 +262,12 @@ export default function RatingsClient() {
             </motion.p>
 
             <motion.p variants={fadeUp} transition={{ duration: 0.5 }} className="text-base text-muted max-w-2xl leading-relaxed mb-8">
-              Know Your Guests tells you what&apos;s happening. Own Your Rating tells you how good it actually is. Average, median, latest — broken down by platform and by segment. A 12-month trend line so you know if you&apos;re on the way up or the way down. And static breakdowns so you can find the specific guest profile that&apos;s dragging your chain average lower than it should be.
+              Know Your Guests tells you what&apos;s happening. Own Your Rating tells you how good it actually is. Average, median, latest - broken down by platform and by segment. A 12-month trend line so you know if you&apos;re on the way up or the way down. And static breakdowns so you can find the specific guest profile that&apos;s dragging your chain average lower than it should be.
             </motion.p>
 
             <motion.div variants={fadeUp} transition={{ duration: 0.5 }} className="flex flex-wrap gap-3">
               <button onClick={() => setSignupOpen(true)} className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90" style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))", color: "#1C2A39" }}>
-                Try Ratings — $99/property/mo
+                Try Ratings - $99/property/mo
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
               </button>
               <Link href="/capabilities/premium" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all hover:text-foreground" style={{ ...glass, color: "var(--muted)" }}>
@@ -319,9 +319,9 @@ export default function RatingsClient() {
               <div>
                 <h3 className="text-xl font-bold text-white mb-3" style={{ fontFamily: "var(--font-manrope)" }}>With Own Your Rating</h3>
                 <ul className="space-y-2 text-sm" style={{ color: "rgba(250,249,247,0.8)" }}>
-                  <li style={{ color: "rgba(201,168,106,0.9)" }}>✓ Your avg is 8.3 — up from 7.9 a year ago.</li>
+                  <li style={{ color: "rgba(201,168,106,0.9)" }}>✓ Your avg is 8.3 - up from 7.9 a year ago.</li>
                   <li style={{ color: "rgba(201,168,106,0.9)" }}>✓ Booking is at 8.6. Expedia is at 8.0 and falling.</li>
-                  <li style={{ color: "rgba(201,168,106,0.9)" }}>✓ UK families are scoring 7.8 — 0.5 pts below the chain.</li>
+                  <li style={{ color: "rgba(201,168,106,0.9)" }}>✓ UK families are scoring 7.8 - 0.5 pts below the chain.</li>
                   <li style={{ color: "rgba(201,168,106,0.9)" }}>✓ You know where to focus this quarter.</li>
                 </ul>
               </div>
@@ -334,7 +334,7 @@ export default function RatingsClient() {
             <p className="text-muted mb-8 max-w-lg mx-auto">Start a free trial. No credit card. Cancel any time. See your chain&apos;s rating data the way it should be seen.</p>
             <div className="flex flex-wrap justify-center gap-3">
               <button onClick={() => setSignupOpen(true)} className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all hover:opacity-90" style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))", color: "#1C2A39" }}>
-                Try Ratings — $99/property/mo
+                Try Ratings - $99/property/mo
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
               </button>
               <Link href="/capabilities/premium" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all hover:text-foreground" style={{ ...glass, color: "var(--muted)" }}>
@@ -346,7 +346,7 @@ export default function RatingsClient() {
         </div>
       </main>
 
-      <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} ctaSource="ratings_own_rating" title="Try Ratings." subtitle="$99/property/mo. Tell us about your chain and we'll set you up." ctaLabel="Try Ratings — $99/property/mo" />
+      <SignupModal open={signupOpen} onClose={() => setSignupOpen(false)} ctaSource="ratings_own_rating" title="Try Ratings." subtitle="$99/property/mo. Tell us about your chain and we'll set you up." ctaLabel="Try Ratings - $99/property/mo" />
     </div>
   );
 }

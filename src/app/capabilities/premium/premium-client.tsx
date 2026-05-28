@@ -46,7 +46,7 @@ function InsightCardVisual() {
         <ul className="text-xs text-muted space-y-1">
           <li>• Add 1 front desk staff member on Mon–Fri 2:30–6pm at city-centre properties</li>
           <li>• Pilot mobile check-in at Prague and Vienna before rolling out chain-wide</li>
-          <li>• Audit room-ready timing — delays may originate with housekeeping, not front desk</li>
+          <li>• Audit room-ready timing - delays may originate with housekeeping, not front desk</li>
         </ul>
       </div>
 
@@ -61,9 +61,9 @@ function InsightCardVisual() {
 function ElaineChatVisual() {
   const messages = [
     { role: "user", text: "What's our biggest complaint across the chain this month?" },
-    { role: "elaine", text: "Check-in speed is your #1 issue — mentioned in 28% of reviews this month, up 4% vs last month. It's concentrated in your 4 city-centre properties. Average rating when this is mentioned: 7.4 vs your chain avg of 8.3." },
+    { role: "elaine", text: "Check-in speed is your #1 issue - mentioned in 28% of reviews this month, up 4% vs last month. It's concentrated in your 4 city-centre properties. Average rating when this is mentioned: 7.4 vs your chain avg of 8.3." },
     { role: "user", text: "Which property has it worst?" },
-    { role: "elaine", text: "Vienna Central has the highest concentration — 41% of its reviews mention check-in delays. Prague Old Town is second at 37%. Both show the same pattern: peak hours 3–6pm, weekdays." },
+    { role: "elaine", text: "Vienna Central has the highest concentration - 41% of its reviews mention check-in delays. Prague Old Town is second at 37%. Both show the same pattern: peak hours 3–6pm, weekdays." },
   ];
   return (
     <div className="rounded-2xl p-5" style={glass}>
@@ -112,7 +112,7 @@ function ReviewResponseVisual() {
             <svg className="w-3 h-3" fill="none" stroke="var(--gold)" strokeWidth={1.5} viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
         </div>
-        <p className="text-xs text-muted leading-relaxed">&ldquo;Lovely room and great breakfast. Check-in took much longer than expected — had to wait 20 minutes despite a pre-booked reservation.&rdquo;</p>
+        <p className="text-xs text-muted leading-relaxed">&ldquo;Lovely room and great breakfast. Check-in took much longer than expected - had to wait 20 minutes despite a pre-booked reservation.&rdquo;</p>
       </div>
 
       <div className="mb-3">
@@ -122,7 +122,7 @@ function ReviewResponseVisual() {
           <span className="ml-auto text-[10px] px-2 py-0.5 rounded-full" style={{ color: "var(--success)", background: "rgba(74,143,107,0.1)" }}>Score: 91/100</span>
         </div>
         <div className="rounded-xl p-3" style={{ background: "rgba(74,143,107,0.05)", border: "1px solid rgba(74,143,107,0.15)" }}>
-          <p className="text-xs text-muted leading-relaxed">Dear Maria, thank you for staying with us and for your kind words about the room and breakfast — we&apos;re delighted you enjoyed them. We sincerely apologise for the wait at check-in; this fell short of our standard and we&apos;re addressing it directly. We hope to welcome you back soon. Warm regards, Thomas (General Manager)</p>
+          <p className="text-xs text-muted leading-relaxed">Dear Maria, thank you for staying with us and for your kind words about the room and breakfast - we&apos;re delighted you enjoyed them. We sincerely apologise for the wait at check-in; this fell short of our standard and we&apos;re addressing it directly. We hope to welcome you back soon. Warm regards, Thomas (General Manager)</p>
         </div>
       </div>
 
@@ -212,16 +212,16 @@ const FEATURES = [
     label: "AI Responses",
     badge: "Top feature",
     headline: "A quality response for every review. You choose how hands-on to be.",
-    body: "For every review, RatingIQ generates a response in the guest's language — addressing what they praised, what they complained about, signed with your hotelier's name. A 12-point quality check runs automatically before anything goes out. Then you choose your mode: copy-paste it yourself, or let Auto-Respond post directly to Booking.com and Google with a single approval click. Same quality engine, two levels of control.",
-    detail: "Response generation per review, 12-point quality scoring, multi-turn refinement. Two modes — Copy-paste (manual control) or Auto-Respond (on-demand — one-click approval posts directly to Booking.com + Google).",
+    body: "For every review, RatingIQ generates a response in the guest's language - addressing what they praised, what they complained about, signed with your hotelier's name. A 12-point quality check runs automatically before anything goes out. Then you choose your mode: copy-paste it yourself, or let Auto-Respond post directly to Booking.com and Google with a single approval click. Same quality engine, two levels of control.",
+    detail: "Response generation per review, 12-point quality scoring, multi-turn refinement. Two modes - Copy-paste (manual control) or Auto-Respond (on-demand - one-click approval posts directly to Booking.com + Google).",
     visual: <ReviewResponseVisual />,
   },
   {
     id: "insights",
     label: "Insights",
     badge: "Top feature",
-    headline: "Not just what guests said. What it means — and what to fix first.",
-    body: "RatingIQ reads every review across your chain, groups feedback into operational categories — Check-In Speed, Cleanliness, Staff, Value — and surfaces the root cause behind each one, with specific fixes attached. Not a sentiment score. An actual priority list, built from your data.",
+    headline: "Not just what guests said. What it means - and what to fix first.",
+    body: "RatingIQ reads every review across your chain, groups feedback into operational categories - Check-In Speed, Cleanliness, Staff, Value - and surfaces the root cause behind each one, with specific fixes attached. Not a sentiment score. An actual priority list, built from your data.",
     detail: "Category breakdown (share %, avg rating, MoM trend), top issues by ranking, executive summary, root cause per category, action items, time-series view, example guest quotes.",
     visual: <InsightCardVisual />,
   },
@@ -230,7 +230,7 @@ const FEATURES = [
     label: "Elaine",
     badge: "Your ChatGPT for hotels",
     headline: "Every question you have about your chain. Answered.",
-    body: "Elaine is a dedicated AI analyst that only knows one thing: your hotels. Every review, every platform, every property — she's read it all. Ask in plain language: 'What's hurting our Vienna properties?', 'Which guest type scores us lowest on Booking?', 'Show me all WiFi complaints from the last 90 days'. She doesn't give generic hospitality advice. She gives answers from your data, your guests, your chain.",
+    body: "Elaine is a dedicated AI analyst that only knows one thing: your hotels. Every review, every platform, every property - she's read it all. Ask in plain language: 'What's hurting our Vienna properties?', 'Which guest type scores us lowest on Booking?', 'Show me all WiFi complaints from the last 90 days'. She doesn't give generic hospitality advice. She gives answers from your data, your guests, your chain.",
     detail: "Natural language queries over all review data, semantic search by topic, data aggregations, dynamic chart generation (bar, line, pie, scatter), scoped exclusively to your chain.",
     visual: <ElaineChatVisual />,
   },
@@ -239,7 +239,7 @@ const FEATURES = [
     label: "Reviews",
     badge: null,
     headline: "Every review your chain has ever received. All in one place.",
-    body: "Every review from Booking.com, Google, Expedia, and TripAdvisor — searchable, filterable, sortable. By platform, by rating, by response status, by date. No more switching tabs. No more missing a review from a platform you forgot to check. One view, every property.",
+    body: "Every review from Booking.com, Google, Expedia, and TripAdvisor - searchable, filterable, sortable. By platform, by rating, by response status, by date. No more switching tabs. No more missing a review from a platform you forgot to check. One view, every property.",
     detail: "Full review access across all platforms, search and filter by platform / rating / response status / date, sort by rating or date, per-property and chain-wide.",
     visual: null,
   },
@@ -248,7 +248,7 @@ const FEATURES = [
     label: "Staff Actions",
     badge: null,
     headline: "Log what your team fixed. See whether it moved the rating.",
-    body: "When check-in speed is flagged, someone needs to act on it. Log who did what, when, and against which category. Over time, you can see which operational changes actually moved the needle — and which didn't. Priorities without accountability don't stick.",
+    body: "When check-in speed is flagged, someone needs to act on it. Log who did what, when, and against which category. Over time, you can see which operational changes actually moved the needle - and which didn't. Priorities without accountability don't stick.",
     detail: "Create actions per category, assign staff member, set date, view action history per category, cross-reference with insight trends.",
     visual: <ActionsVisual />,
   },
@@ -292,7 +292,7 @@ export default function PremiumClient() {
             </motion.p>
 
             <motion.p variants={fadeUp} transition={{ duration: 0.5 }} className="text-base text-muted max-w-2xl leading-relaxed mb-8">
-              Your rating, fully managed — this is the full operating layer. It reads every review, finds the patterns, and tells your team exactly what to fix. Responses go out without anyone lifting a finger. Staff actions get logged against the priorities that triggered them. Every Monday you get the numbers.
+              Your rating, fully managed - this is the full operating layer. It reads every review, finds the patterns, and tells your team exactly what to fix. Responses go out without anyone lifting a finger. Staff actions get logged against the priorities that triggered them. Every Monday you get the numbers.
             </motion.p>
 
             <motion.div variants={fadeUp} transition={{ duration: 0.5 }} className="flex flex-wrap gap-3">
@@ -385,7 +385,7 @@ export default function PremiumClient() {
               See it on your chain&apos;s actual data.
             </h2>
             <p className="mb-8 max-w-lg mx-auto text-sm" style={{ color: "rgba(250,249,247,0.6)" }}>
-              We don&apos;t do generic demos. We connect to your chain&apos;s reviews live and show you your real insights, your real issues, and what the AI would recommend — before you commit to anything.
+              We don&apos;t do generic demos. We connect to your chain&apos;s reviews live and show you your real insights, your real issues, and what the AI would recommend - before you commit to anything.
             </p>
             <button onClick={() => setDemoOpen(true)} className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold transition-all hover:opacity-90" style={{ background: "var(--gold)", color: "#1C2A39" }}>
               Book a Demo
@@ -402,7 +402,7 @@ export default function PremiumClient() {
         onClose={() => setDemoOpen(false)}
         ctaSource="premium_book_demo"
         title="Book a demo."
-        subtitle="We connect to your chain's actual data and show you your real insights — live."
+        subtitle="We connect to your chain's actual data and show you your real insights - live."
         ctaLabel="Book a Demo"
         note="We'll show you your chain's real data. Live."
       />

@@ -2678,7 +2678,7 @@ export default function HomeClient() {
             <div>
               <h4 className="text-foreground text-xs font-semibold uppercase tracking-wider mb-3">Company</h4>
               <div className="flex flex-col gap-2">
-                <a href="mailto:hello@upstar.ai" className="text-muted text-sm hover:text-foreground transition-colors">Contact</a>
+                <button onClick={() => openLead("contact_footer", { title: "Get in touch.", subtitle: "Reach us at hotels@rating-iq.com or fill this in and we'll reply.", ctaLabel: "Send Message" })} className="text-muted text-sm hover:text-foreground transition-colors text-left">Contact</button>
               </div>
             </div>
 

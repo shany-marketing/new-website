@@ -44,7 +44,7 @@ const TIERS = [
     price: "Starting at $1",
     period: "/room/month",
     priceSub: "Custom pricing for your chain.",
-    sub: "From data to decisions — fully tailored to your chain's size.",
+    sub: "From data to decisions -  fully tailored to your chain's size.",
     badge: "Custom",
     features: [
       "Everything in Free",
@@ -52,7 +52,7 @@ const TIERS = [
       "Rating breakdown per platform",
       "Guest origin & traveler type breakdowns",
       "AI issue prioritization & root cause analysis",
-      "Elaine — your ChatGPT for hotels",
+      "Elaine -  your ChatGPT for hotels",
       "AI-drafted review responses",
       "Auto-Respond (on-demand)",
       "Staff action tracking",
@@ -67,19 +67,19 @@ const TIERS = [
 const FAQS = [
   {
     q: "How does the $1/room/month pricing work?",
-    a: "That's the starting point. Pricing scales with your chain's size and which modules you activate — Insights, AI Responses, and more can be added à la carte. Book a demo and we'll build a custom quote for your exact setup.",
+    a: "That's the starting point. Pricing scales with your chain's size and which modules you activate -  Insights, AI Responses, and more can be added à la carte. Book a demo and we'll build a custom quote for your exact setup.",
   },
   {
     q: "How long does it take to see a rating improvement?",
-    a: "Most chains start seeing clearer priorities within the first week. Rating movement typically follows in 30–60 days as operational fixes take hold. We show you the shortest path — the execution is yours.",
+    a: "Most chains start seeing clearer priorities within the first week. Rating movement typically follows in 30–60 days as operational fixes take hold. We show you the shortest path -  the execution is yours.",
   },
   {
     q: "How fast can my whole chain go live?",
-    a: "Same day. Each property takes under 5 minutes — paste the review page URLs and our pipeline ingests everything automatically. No IT involvement, no API keys, no integrations.",
+    a: "Same day. Each property takes under 5 minutes -  paste the review page URLs and our pipeline ingests everything automatically. No IT involvement, no API keys, no integrations.",
   },
   {
     q: "Do my GMs need to change anything?",
-    a: "Nothing. Auto-Respond handles responses on demand — one-click approval posts directly to Booking.com and Google in the guest's language. GMs keep running their property. Their workflow doesn't change at all.",
+    a: "Nothing. Auto-Respond handles responses on demand -  one-click approval posts directly to Booking.com and Google in the guest's language. GMs keep running their property. Their workflow doesn't change at all.",
   },
   {
     q: "Is our chain's data isolated from competitors?",
@@ -119,7 +119,7 @@ export default function PricingPage() {
             </span>
           </h1>
           <p className="text-muted text-lg max-w-xl mx-auto">
-            Free for one property. Premium starts at $1 per room per month — custom-priced to your chain.
+            Free for one property. Premium starts at $1 per room per month -  custom-priced to your chain.
           </p>
         </motion.div>
 

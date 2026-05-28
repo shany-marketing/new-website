@@ -55,8 +55,8 @@ export default function TermsPage() {
               <p>
                 UpStar is a B2B analytics platform designed for hotel managers.
                 We aggregate publicly available guest reviews from Online Travel
-                Agency (OTA) platforms — including but not limited to
-                Booking.com, Google, Expedia, and TripAdvisor — and apply
+                Agency (OTA) platforms - including but not limited to
+                Booking.com, Google, Expedia, and TripAdvisor - and apply
                 AI-powered analysis to surface actionable insights, generate
                 response suggestions, and provide performance analytics.
               </p>
@@ -119,7 +119,7 @@ export default function TermsPage() {
                 <li>
                   You are solely responsible for how you use AI-generated
                   response suggestions. UpStar provides response drafts as a
-                  convenience tool — you review, edit, and post responses to OTA
+                  convenience tool - you review, edit, and post responses to OTA
                   platforms at your own discretion.
                 </li>
                 <li>

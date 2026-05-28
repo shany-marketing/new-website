@@ -160,7 +160,7 @@ export default function SignupModal({
                         <ElaineFace size={24} />
                       </div>
                       <div className="rounded-2xl rounded-tl-sm px-4 py-3 text-sm leading-relaxed max-w-[85%]" style={{ ...glass }}>
-                        Hi — I&apos;m Elaine. Tell us about your chain and we&apos;ll be in touch.<br />
+                        Hi - I&apos;m Elaine. Tell us about your chain and we&apos;ll be in touch.<br />
                         <span className="text-muted text-xs">We&apos;ll show you your data. Live.</span>
                       </div>
                     </div>
@@ -187,7 +187,7 @@ export default function SignupModal({
                     <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))" }}>
                       <svg className="w-6 h-6" fill="none" stroke="#1C2A39" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
                     </div>
-                    <p className="font-semibold text-foreground text-base">Got it — we&apos;ll be in touch.</p>
+                    <p className="font-semibold text-foreground text-base">Got it - we&apos;ll be in touch.</p>
                     <p className="text-muted text-sm">Usually within a few hours.</p>
                     <button onClick={onClose} className="mt-2 text-sm font-semibold px-6 py-2.5 rounded-xl transition-all hover:opacity-90" style={{ background: "var(--input-bg)", color: "var(--foreground)", border: "1px solid var(--glass-border)" }}>Close</button>
                   </div>

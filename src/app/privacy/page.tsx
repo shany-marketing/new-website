@@ -3,8 +3,8 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | UpStar",
-  description: "UpStar Privacy Policy",
+  title: "Privacy Policy | RatingIQ",
+  description: "RatingIQ Privacy Policy",
 };
 
 export default function PrivacyPage() {
@@ -36,7 +36,7 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-foreground font-semibold text-lg mb-3">1. Introduction</h2>
               <p>
-                UpStar (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is committed to protecting
+                RatingIQ (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is committed to protecting
                 your privacy. This Privacy Policy explains how we collect, use, and safeguard
                 information when you use our platform.
               </p>
@@ -66,7 +66,7 @@ export default function PrivacyPage() {
                 2.3 Publicly Available Review Data
               </h3>
               <p className="mb-3">
-                By using UpStar, you consent to the collection and processing of publicly
+                By using RatingIQ, you consent to the collection and processing of publicly
                 available guest reviews from OTA platforms for the hotel properties you register.
                 This includes:
               </p>
@@ -196,8 +196,8 @@ export default function PrivacyPage() {
               <h2 className="text-foreground font-semibold text-lg mb-3">11. Contact</h2>
               <p>
                 For privacy-related questions or to exercise your rights, contact us at{" "}
-                <a href="mailto:privacy@upstar.com" className="text-gold-light hover:text-gold transition-colors">
-                  privacy@upstar.com
+                <a href="mailto:privacy@rating-iq.com" className="text-gold-light hover:text-gold transition-colors">
+                  privacy@rating-iq.com
                 </a>.
               </p>
             </section>
