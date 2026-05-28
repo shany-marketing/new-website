@@ -247,7 +247,7 @@ export default function RatingsClient() {
                   $99 · /property/month
                 </span>
                 <span className="text-xs text-muted">Part of the Capabilities suite →</span>
-                <Link href="/capabilities/statistics" className="text-xs" style={{ color: "var(--gold)" }}>Know Your Guests</Link>
+                <Link href="/pulse" className="text-xs" style={{ color: "var(--gold)" }}>Know Your Guests</Link>
                 <span className="text-xs text-muted">·</span>
                 <Link href="/capabilities/premium" className="text-xs" style={{ color: "var(--gold)" }}>Drive Your Revenue</Link>
               </div>

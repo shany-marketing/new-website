@@ -299,13 +299,9 @@ export default function StatisticsClient() {
           <motion.div initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.1 } } }} className="mb-10">
             <motion.div variants={fadeUp} transition={{ duration: 0.5 }}>
               <div className="flex flex-wrap items-center gap-3 mb-6">
-                <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full" style={{ color: "var(--muted)", background: "var(--input-bg)", border: "1px solid var(--glass-border)" }}>
-                  Free · No credit card
+                <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full" style={{ color: "var(--gold)", background: "rgba(201,168,106,0.1)", border: "1px solid rgba(201,168,106,0.2)" }}>
+                  Pulse - FREE
                 </span>
-                <span className="text-xs text-muted">Part of the Capabilities suite →</span>
-                <Link href="/capabilities/ratings" className="text-xs" style={{ color: "var(--gold)" }}>Ratings</Link>
-                <span className="text-xs text-muted">·</span>
-                <Link href="/capabilities/premium" className="text-xs" style={{ color: "var(--gold)" }}>Premium</Link>
               </div>
             </motion.div>
 
@@ -346,7 +342,7 @@ export default function StatisticsClient() {
               >
                 {/* Copy */}
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "var(--gold)" }}>Statistics · {String(i + 1).padStart(2, "0")}</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "var(--gold)" }}>Pulse · {String(i + 1).padStart(2, "0")}</p>
                   <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 leading-snug" style={{ fontFamily: "var(--font-manrope)" }}>
                     {f.label}
                   </h2>

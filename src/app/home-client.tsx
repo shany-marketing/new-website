@@ -1864,7 +1864,7 @@ export default function HomeClient() {
                 {capabilitiesOpen && (
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50" style={{ minWidth: "260px" }} onMouseEnter={openCap} onMouseLeave={closeCap}>
                     <div className="rounded-2xl py-2" style={{ background: "var(--nav-scrolled-bg)", backdropFilter: "blur(16px)", border: "1px solid var(--glass-border)", boxShadow: "0 20px 40px rgba(0,0,0,0.25)" }}>
-                      <a href="/capabilities/statistics" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
+                      <a href="/pulse" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
                         <div className="flex items-center gap-2 mb-0.5 flex-nowrap">
                           <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap" style={{ color: "var(--muted)", background: "var(--input-bg)" }}>Free</span>
                           <span className="text-sm font-semibold text-foreground">Know Your Guests</span>
@@ -1938,7 +1938,7 @@ export default function HomeClient() {
             </button>
             {capabilitiesMobileOpen && (
               <div className="pl-4 pb-1 flex flex-col gap-1">
-                <a href="/capabilities/statistics" onClick={closeMobileNav} className="py-2 text-sm text-muted hover:text-foreground transition-colors">Know Your Guests <span className="text-xs opacity-50">· Free</span></a>
+                <a href="/pulse" onClick={closeMobileNav} className="py-2 text-sm text-muted hover:text-foreground transition-colors">Know Your Guests <span className="text-xs opacity-50">· Free</span></a>
                 <a href="/capabilities/ratings" onClick={closeMobileNav} className="py-2 text-sm text-muted hover:text-foreground transition-colors">Own Your Rating <span className="text-xs opacity-50">· Tier 1</span></a>
                 <a href="/capabilities/premium" onClick={closeMobileNav} className="py-2 text-sm text-muted hover:text-foreground transition-colors">Drive Your Revenue <span className="text-xs opacity-50">· Premium</span></a>
               </div>
@@ -2497,7 +2497,7 @@ export default function HomeClient() {
           </div>
 
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="text-center mt-12">
-            <a href="/capabilities/statistics" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:opacity-90" style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))", color: "#1C2A39" }}>
+            <a href="/pulse" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 hover:opacity-90" style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))", color: "#1C2A39" }}>
               Explore the Full Platform
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
             </a>

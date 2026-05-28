@@ -56,7 +56,7 @@ export default function CapabilitiesNav({ cta }: Props) {
               {capOpen && (
                 <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50" style={{ minWidth: "260px" }} onMouseEnter={openCap} onMouseLeave={closeCap}>
                   <div className="rounded-2xl py-2" style={{ background: "var(--nav-scrolled-bg)", backdropFilter: "blur(12px)", boxShadow: "0 20px 40px rgba(0,0,0,0.25)" }}>
-                    <Link href="/capabilities/statistics" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
+                    <Link href="/pulse" className="block px-4 py-3 rounded-xl mx-1 hover:bg-white/5 transition-colors group">
                       <div className="flex items-center gap-2 mb-0.5 flex-nowrap">
                         <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap" style={{ color: "var(--muted)", background: "var(--input-bg)" }}>Free</span>
                         <span className="text-sm font-semibold text-foreground">Know Your Guests</span>
@@ -123,7 +123,7 @@ export default function CapabilitiesNav({ cta }: Props) {
       {mobileOpen && (
         <div className="md:hidden border-t px-4 pb-5 pt-3" style={{ background: "var(--nav-scrolled-bg)", backdropFilter: "blur(12px)", borderColor: "var(--glass-border)" }}>
           <p className="text-[10px] font-semibold uppercase tracking-wider text-muted mb-2">Capabilities</p>
-          <Link href="/capabilities/statistics" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 py-2.5 border-b" style={{ borderColor: "var(--glass-border)" }}>
+          <Link href="/pulse" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 py-2.5 border-b" style={{ borderColor: "var(--glass-border)" }}>
             <span className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full" style={{ color: "var(--muted)", background: "var(--input-bg)" }}>Free</span>
             <span className="text-sm font-medium text-foreground">Know Your Guests</span>
           </Link>
