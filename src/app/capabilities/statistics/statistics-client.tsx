@@ -362,33 +362,6 @@ export default function StatisticsClient() {
             ))}
           </div>
 
-          {/* Tier comparison */}
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.5 }} className="mt-28 rounded-2xl overflow-hidden" style={{ border: "1px solid var(--glass-border)" }}>
-            <div className="p-6 border-b" style={{ background: "rgba(201,168,106,0.04)", borderColor: "var(--glass-border)" }}>
-              <p className="text-sm font-semibold text-foreground">Know Your Guests is your foundation. Here&apos;s what the full platform adds.</p>
-            </div>
-            <div className="grid grid-cols-3">
-              {[
-                { name: "Know Your Guests", price: "Free", color: "var(--muted)", items: ["Review volume", "Platform mix", "Guest demographics", "Heatmap", "Response rate", "Platform health"] },
-                { name: "Own Your Rating", price: "$99/property/mo", color: "var(--gold)", items: ["+ Avg, median & latest score", "+ Per-platform rating", "+ Monthly rating trend", "+ Rating distribution", "+ Static breakdowns"] },
-                { name: "Drive Your Revenue", price: "Custom", color: "var(--gold)", items: ["+ AI insights & root causes", "+ Elaine AI analyst", "+ AI Responses", "+ Weekly digest"] },
-              ].map(tier => (
-                <div key={tier.name} className="p-5 border-r last:border-r-0" style={{ borderColor: "var(--glass-border)" }}>
-                  <p className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: tier.color }}>{tier.name}</p>
-                  <p className="text-xs text-muted mb-4">{tier.price}</p>
-                  <ul className="space-y-1.5">
-                    {tier.items.map(item => (
-                      <li key={item} className="text-xs text-muted flex items-start gap-1.5">
-                        <span style={{ color: tier.color }} className="mt-0.5 shrink-0">✓</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
           {/* CTA */}
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.5 }} className="mt-16 text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4" style={{ fontFamily: "var(--font-manrope)" }}>Start with the full picture. It&apos;s free.</h2>
