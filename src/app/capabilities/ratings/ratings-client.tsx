@@ -120,38 +120,6 @@ function TrendVisual() {
   );
 }
 
-function SegmentDrillVisual() {
-  const segments = [
-    { label: "Couples · Germany", rating: 8.9, pct: 92 },
-    { label: "Solo · France", rating: 8.6, pct: 86 },
-    { label: "Business · US", rating: 8.2, pct: 79 },
-    { label: "Families · UK", rating: 7.8, pct: 72 },
-    { label: "Groups · Netherlands", rating: 7.4, pct: 65 },
-  ];
-  const getColor = (r: number) => r >= 8.5 ? "var(--success)" : r >= 8.0 ? "var(--gold)" : "var(--danger)";
-  return (
-    <div className="rounded-2xl p-5" style={glass}>
-      <p className="text-[10px] font-semibold uppercase tracking-wider text-muted mb-1">Segment Breakdown</p>
-      <p className="text-[10px] text-muted mb-4">Guest origin × traveler type × satisfaction</p>
-      <div className="space-y-2.5">
-        {segments.map(s => (
-          <div key={s.label}>
-            <div className="flex justify-between mb-1">
-              <span className="text-xs text-muted">{s.label}</span>
-              <span className="text-xs font-bold" style={{ color: getColor(s.rating) }}>{s.rating}</span>
-            </div>
-            <div className="h-1.5 rounded-full" style={{ background: "var(--input-bg)" }}>
-              <motion.div className="h-1.5 rounded-full" initial={{ width: 0 }} whileInView={{ width: `${s.pct}%` }} viewport={{ once: true }} transition={{ duration: 0.7 }} style={{ background: getColor(s.rating) }} />
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="mt-4 pt-3 border-t" style={{ borderColor: "var(--glass-border)" }}>
-        <p className="text-[10px]" style={{ color: "var(--danger)" }}>⚠ Families from UK scoring 1.5 pts below chain average - flagged</p>
-      </div>
-    </div>
-  );
-}
 
 function GuestCombinationsVisual() {
   const rows = [
@@ -211,19 +179,11 @@ const FEATURES = [
     visual: <TrendVisual />,
   },
   {
-    id: "segments",
-    label: "Static Breakdowns",
-    headline: "Find the exact segment dragging your chain down.",
-    body: "Your 8.3 average is a blended number. Couples from Germany might be scoring 8.9 while UK families score 7.8. That gap doesn't show up in your headline rating - but it's real, and it's costing you bookings from a specific, trackable segment. These breakdowns surface it.",
-    detail: "Rating breakdowns by guest origin, traveler type, room type. Identify underperforming segments per property.",
-    visual: <SegmentDrillVisual />,
-  },
-  {
     id: "combinations",
     label: "Guest Combinations",
-    headline: "It's not just families scoring low. It's families from the UK. That specificity changes everything.",
-    body: "Guest combinations put origin, traveler type, and satisfaction in one table. When you can see that UK families are your lowest-scoring segment at 89 reviews a month, that's a fixable problem - not a vague trend.",
-    detail: "Origin + traveler type + rating + volume combinations. Ranked by rating and count. Per-property.",
+    headline: "Your 8.3 average is a blended number. Find exactly who is dragging it down - and how many of them there are.",
+    body: "It's not just families scoring low. It's families from the UK, at 145 reviews a month. That volume matters. A low-scoring segment with 8 reviews is noise. The same score with 145 reviews is a fixable portfolio problem. Guest combinations give you origin, traveler type, rating, and count in one table - so you know which segments are worth acting on.",
+    detail: "Origin + traveler type + rating + review count, ranked and per-property. Identify underperforming segments by both score and volume.",
     visual: <GuestCombinationsVisual />,
   },
 ];
