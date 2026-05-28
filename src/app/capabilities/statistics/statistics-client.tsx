@@ -168,22 +168,22 @@ function ResponseRateVisual() {
 
 function PlatformHealthVisual() {
   const rows = [
-    { platform: "Booking.com", count: "+124", trend: "up" },
-    { platform: "Google", count: "+89", trend: "down" },
-    { platform: "TripAdvisor", count: "+31", trend: "neutral" },
-    { platform: "Expedia", count: "+18", trend: "up" },
+    { platform: "Booking.com", count: 124, trend: "up" },
+    { platform: "Google", count: 89, trend: "down" },
+    { platform: "TripAdvisor", count: 31, trend: "neutral" },
+    { platform: "Expedia", count: 18, trend: "up" },
   ];
   return (
     <div className="rounded-2xl p-5" style={glass}>
       <p className="text-[10px] font-semibold uppercase tracking-wider text-muted mb-4">Platform Health · Volume</p>
       <div className="space-y-2">
         {rows.map(r => (
-          <div key={r.platform} className="flex items-center justify-between py-2.5 border-b" style={{ borderColor: "var(--glass-border)" }}>
-            <span className="text-xs font-medium text-foreground w-28">{r.platform}</span>
-            <span className="text-xs" style={{ color: r.trend === "up" ? "var(--success)" : r.trend === "down" ? "var(--danger)" : "var(--muted)" }}>
-              {r.trend === "up" ? "▲" : r.trend === "down" ? "▼" : "-"}
+          <div key={r.platform} className="flex items-center py-2.5 border-b gap-3" style={{ borderColor: "var(--glass-border)" }}>
+            <span className="text-xs font-medium text-foreground w-28 shrink-0">{r.platform}</span>
+            <span className="flex items-center justify-center w-4 shrink-0" style={{ color: r.trend === "up" ? "var(--success)" : r.trend === "down" ? "var(--danger)" : "var(--muted)" }}>
+              {r.trend === "up" ? "▲" : r.trend === "down" ? "▼" : "—"}
             </span>
-            <span className="text-xs" style={{ color: "var(--success)" }}>{r.count} reviews</span>
+            <span className="text-xs ml-auto" style={{ color: "var(--muted)" }}>based on {r.count} reviews</span>
           </div>
         ))}
       </div>
