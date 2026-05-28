@@ -75,7 +75,7 @@ function HeatmapVisual() {
     [4,5,6,7,8,9,7],[3,4,5,6,7,8,6],[4,5,6,7,8,9,7],
   ];
   const getColor = (v: number) => {
-    const opacity = 0.08 + (v / 10) * 0.55;
+    const opacity = 0.04 + (v / 10) * 0.92;
     return `rgba(201,168,106,${opacity.toFixed(2)})`;
   };
   return (
@@ -95,7 +95,7 @@ function HeatmapVisual() {
         ))}
         <div className="flex items-center gap-2 mt-3 justify-end">
           <span className="text-[8px] text-muted">Less</span>
-          {[0.1,0.2,0.35,0.5,0.63].map((o, i) => <div key={i} className="w-3 h-3 rounded-sm" style={{ background: `rgba(201,168,106,${o})` }} />)}
+          {[0.05,0.25,0.5,0.73,0.96].map((o, i) => <div key={i} className="w-3 h-3 rounded-sm" style={{ background: `rgba(201,168,106,${o})` }} />)}
           <span className="text-[8px] text-muted">More</span>
         </div>
       </div>
