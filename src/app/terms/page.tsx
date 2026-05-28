@@ -214,10 +214,10 @@ export default function TermsPage() {
               <p>
                 For questions about these Terms, please contact us at{" "}
                 <a
-                  href="mailto:support@upstar.com"
+                  href="mailto:hotels@rating-iq.com"
                   className="text-gold-light hover:text-gold transition-colors"
                 >
-                  omri@upstar5.com
+                  hotels@rating-iq.com
                 </a>
                 .
               </p>

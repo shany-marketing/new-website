@@ -2014,13 +2014,13 @@ export default function HomeClient() {
                 transition={{ duration: 0.6, delay: 0.45 }}
                 className="flex flex-row flex-wrap gap-3 mb-12"
               >
-                <Link
-                  href="#contact"
+                <button
+                  onClick={() => openLead("hero_cta", { title: "See what's driving your rating.", subtitle: "Tell us about your chain and we'll show you live on your data.", ctaLabel: "Book a Demo" })}
                   className="px-5 py-2.5 rounded-xl font-semibold text-navy-1 text-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-gold/20"
                   style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))" }}
                 >
                   See What&apos;s Driving Your Rating
-                </Link>
+                </button>
                 <a
                   href="#how-it-works"
                   className="px-5 py-2.5 rounded-xl font-semibold text-foreground text-sm transition-all duration-300 hover:scale-[1.02] flex items-center gap-2"
