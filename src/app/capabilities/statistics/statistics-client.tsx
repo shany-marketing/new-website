@@ -153,13 +153,12 @@ function ResponseRateVisual() {
   return (
     <div className="rounded-2xl p-5" style={glass}>
       <p className="text-[10px] font-semibold uppercase tracking-wider text-muted mb-4">Response Rate</p>
-      <div className="flex items-center justify-center">
-        <svg width="80" height="80" viewBox="0 0 80 80">
-          <circle cx="40" cy="40" r="30" fill="none" stroke="var(--input-bg)" strokeWidth="10" />
-          <circle cx="40" cy="40" r="30" fill="none" stroke="var(--gold)" strokeWidth="10"
-            strokeDasharray={`${0.71 * 188.5} ${188.5}`} strokeDashoffset="47" transform="rotate(-90 40 40)" strokeLinecap="round" />
-          <text x="40" y="36" textAnchor="middle" fontSize="14" fontWeight="bold" fill="var(--foreground)">71%</text>
-          <text x="40" y="50" textAnchor="middle" fontSize="8" fill="var(--muted)">avg rate</text>
+      <div className="flex items-center justify-center py-4">
+        <svg width="140" height="140" viewBox="0 0 140 140">
+          <circle cx="70" cy="70" r="54" fill="none" stroke="var(--input-bg)" strokeWidth="14" />
+          <circle cx="70" cy="70" r="54" fill="none" stroke="var(--gold)" strokeWidth="14"
+            strokeDasharray={`${0.71 * 339.3} ${339.3}`} strokeDashoffset="85" transform="rotate(-90 70 70)" strokeLinecap="round" />
+          <text x="70" y="78" textAnchor="middle" fontSize="26" fontWeight="bold" fill="var(--foreground)">71%</text>
         </svg>
       </div>
     </div>
