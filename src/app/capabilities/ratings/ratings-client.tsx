@@ -51,10 +51,10 @@ function RatingOverviewVisual() {
 
 function PlatformRatingsVisual() {
   const platforms = [
-    { label: "Booking.com", rating: 8.6, reviews: 2920, color: "var(--chart-1)" },
-    { label: "TripAdvisor", rating: 8.4, reviews: 1250, color: "var(--chart-3)" },
-    { label: "Google", rating: 8.2, reviews: 3510, color: "var(--chart-2)" },
-    { label: "Expedia", rating: 8.0, reviews: 660, color: "var(--chart-5)" },
+    { label: "Booking.com", rating: 8.6, max: 10, reviews: 2920, color: "var(--chart-1)" },
+    { label: "TripAdvisor", rating: 8.4, max: 10, reviews: 1250, color: "var(--chart-3)" },
+    { label: "Google", rating: 4.0, max: 5, reviews: 3510, color: "var(--chart-2)" },
+    { label: "Expedia", rating: 4.0, max: 5, reviews: 660, color: "var(--chart-5)" },
   ];
   return (
     <div className="rounded-2xl p-5" style={glass}>
@@ -66,18 +66,17 @@ function PlatformRatingsVisual() {
               <span className="text-xs font-medium text-foreground">{p.label}</span>
               <div className="flex items-center gap-3">
                 <span className="text-[10px] text-muted">{p.reviews.toLocaleString()} reviews</span>
-                <span className="text-sm font-bold" style={{ color: p.color }}>{p.rating}</span>
+                <span className="text-sm font-bold" style={{ color: p.color }}>{p.rating} <span className="text-[9px] font-normal opacity-60">/ {p.max}</span></span>
               </div>
             </div>
             <div className="h-1.5 rounded-full" style={{ background: "var(--input-bg)" }}>
-              <motion.div className="h-1.5 rounded-full" initial={{ width: 0 }} whileInView={{ width: `${(p.rating / 10) * 100}%` }} viewport={{ once: true }} transition={{ duration: 0.8 }} style={{ background: p.color }} />
+              <motion.div className="h-1.5 rounded-full" initial={{ width: 0 }} whileInView={{ width: `${(p.rating / p.max) * 100}%` }} viewport={{ once: true }} transition={{ duration: 0.8 }} style={{ background: p.color }} />
             </div>
           </div>
         ))}
       </div>
       <div className="mt-4 pt-3 border-t flex items-center justify-between" style={{ borderColor: "var(--glass-border)" }}>
-        <p className="text-[10px] text-muted">Widest gap: 0.6 pts (Booking vs Expedia)</p>
-        <span className="text-[10px] px-2 py-0.5 rounded-full" style={{ color: "var(--danger)", background: "rgba(184,80,80,0.1)", border: "1px solid rgba(184,80,80,0.2)" }}>Watch Expedia</span>
+        <p className="text-[10px] text-muted">Google &amp; Expedia rated 1–5 · Booking &amp; TripAdvisor rated 1–10</p>
       </div>
     </div>
   );
