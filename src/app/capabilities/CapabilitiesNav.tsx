@@ -92,7 +92,7 @@ export default function CapabilitiesNav({ cta }: Props) {
             {/* Desktop */}
             <div className="hidden md:flex items-center gap-3">
               <ThemeToggle />
-              <Link href="/login" className="text-sm font-semibold transition-colors duration-200 px-4 py-2" style={{ color: "#1C2A39" }}>Log In</Link>
+              <Link href="/login" className="text-sm font-semibold transition-colors duration-200 px-4 py-2" style={{ color: "var(--foreground)" }}>Log In</Link>
               {cta.onClick ? (
                 <button onClick={cta.onClick} className="text-sm font-semibold text-navy-1 rounded-xl px-5 py-2.5 transition-all duration-300 hover:opacity-90 hover:scale-[1.02]" style={{ background: "linear-gradient(to right, var(--gold), var(--gold-dark))" }}>
                   {cta.text}
