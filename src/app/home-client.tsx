@@ -1848,11 +1848,8 @@ export default function HomeClient() {
 
             {/* Col 1 — Logo (left) */}
             <Link href="/">
-              <img
-                src={resolvedTheme === "dark" ? "/logo-white.svg" : "/logo.svg"}
-                alt="RatingIQ"
-                style={{ height: "72px", width: "auto", objectFit: "contain" }}
-              />
+              <img src="/logo.svg" alt="RatingIQ" style={{ height: "72px", width: "auto", objectFit: "contain" }} className="dark:hidden" />
+              <img src="/logo-white.svg" alt="RatingIQ" style={{ height: "72px", width: "auto", objectFit: "contain" }} className="hidden dark:block" />
             </Link>
 
             {/* Col 2 — Nav links (always centered, never shifts) */}
@@ -2684,7 +2681,8 @@ export default function HomeClient() {
             {/* Brand */}
             <div className="col-span-2 md:col-span-1">
               <div className="mb-3">
-                <img src={resolvedTheme === "dark" ? "/logo-white.svg" : "/logo.svg"} alt="RatingIQ" style={{ height: "44px", width: "auto", objectFit: "contain" }} />
+                <img src="/logo.svg" alt="RatingIQ" style={{ height: "44px", width: "auto", objectFit: "contain" }} className="dark:hidden" />
+                <img src="/logo-white.svg" alt="RatingIQ" style={{ height: "44px", width: "auto", objectFit: "contain" }} className="hidden dark:block" />
               </div>
               <p className="text-muted text-xs leading-relaxed">From Review to Revenue.</p>
             </div>

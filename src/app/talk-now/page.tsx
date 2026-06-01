@@ -49,7 +49,8 @@ export default function TalkNowPage() {
     >
       {/* Logo */}
       <Link href="/" style={{ marginBottom: 48, display: "block" }}>
-        <img src={resolvedTheme === "dark" ? "/logo-white.svg" : "/logo.svg"} alt="RatingIQ" style={{ height: 56, width: "auto" }} />
+        <img src="/logo.svg" alt="RatingIQ" style={{ height: 56, width: "auto" }} className="dark:hidden" />
+        <img src="/logo-white.svg" alt="RatingIQ" style={{ height: 56, width: "auto" }} className="hidden dark:block" />
       </Link>
 
       <div
