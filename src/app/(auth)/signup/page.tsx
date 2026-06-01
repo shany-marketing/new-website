@@ -237,7 +237,8 @@ export default function SignupPage() {
     >
       <div className="flex flex-col items-center gap-8">
         <Link href="/">
-          <img src="/logo.svg" alt="RatingIQ" style={{ height: "36px", width: "auto" }} />
+          <img src="/logo.svg" alt="RatingIQ" style={{ height: "36px", width: "auto" }} className="dark:hidden" />
+          <img src="/logo-white.svg" alt="RatingIQ" style={{ height: "36px", width: "auto" }} className="hidden dark:block" />
         </Link>
         <Suspense fallback={<div className="text-muted">Loading...</div>}>
           <SignupForm />
