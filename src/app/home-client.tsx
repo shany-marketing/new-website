@@ -2273,7 +2273,7 @@ export default function HomeClient() {
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }} className="text-center mt-10">
               <p className="text-sm text-muted">
                 There&apos;s a lot more under the hood.{" "}
-                <a href="/capabilities" className="font-semibold underline-offset-2 hover:underline" style={{ color: "var(--gold)" }}>
+                <a href="/premium" className="font-semibold underline-offset-2 hover:underline" style={{ color: "var(--gold)" }}>
                   See all capabilities →
                 </a>
               </p>
