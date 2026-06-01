@@ -1907,7 +1907,7 @@ export default function HomeClient() {
             <div className="flex items-center justify-end gap-3">
               <div className="hidden md:flex items-center gap-3">
                 <ThemeToggle />
-                <Link href="/login" className="text-sm font-semibold transition-colors duration-200 px-4 py-2" style={{ color: "#1C2A39" }}>Log In</Link>
+                <Link href="/signup" className="text-sm font-semibold transition-colors duration-200 px-4 py-2" style={{ color: "#1C2A39" }}>Sign Up</Link>
                 <button
                   onClick={() => openLead("nav_book_demo", { title: "Book a demo.", subtitle: "Tell us about your chain and we'll set up a live session.", ctaLabel: "Book a Demo" })}
                   className="text-sm font-semibold text-navy-1 rounded-xl px-5 py-2.5 transition-all duration-300 hover:opacity-90 hover:scale-[1.02]"
@@ -1956,7 +1956,7 @@ export default function HomeClient() {
             ))}
             <div className="flex flex-col gap-2 mt-3 pt-3 border-t" style={{ borderColor: "var(--glass-border)" }}>
               <ThemeToggle className="self-start" />
-              <Link href="/login" onClick={closeMobileNav} className="font-semibold transition-colors py-2" style={{ color: "#1C2A39" }}>Log In</Link>
+              <Link href="/signup" onClick={closeMobileNav} className="font-semibold transition-colors py-2" style={{ color: "#1C2A39" }}>Sign Up</Link>
               <button
                 onClick={() => { closeMobileNav(); openLead("nav_book_demo", { title: "Book a demo.", subtitle: "Tell us about your chain and we'll set up a live session.", ctaLabel: "Book a Demo" }); }}
                 className="text-center font-semibold text-navy-1 rounded-xl px-5 py-2.5"
