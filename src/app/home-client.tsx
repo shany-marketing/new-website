@@ -1640,8 +1640,6 @@ const PARTNERS = [
 ];
 
 function PartnersCarousel() {
-  const { resolvedTheme } = useTheme();
-  const logoFilter = resolvedTheme === "dark" ? "brightness(0) invert(1)" : "none";
 
   return (
     <section className="py-10 px-4 md:px-8" style={{ borderTop: "1px solid var(--glass-border)", borderBottom: "1px solid var(--glass-border)" }}>
@@ -1655,7 +1653,8 @@ function PartnersCarousel() {
               <img
                 src={p.logo}
                 alt={p.name}
-                style={{ maxHeight: "64px", maxWidth: (p as any).maxWidth || "160px", width: "auto", height: "auto", objectFit: "contain", filter: logoFilter }}
+                style={{ maxHeight: "64px", maxWidth: (p as any).maxWidth || "160px", width: "auto", height: "auto", objectFit: "contain" }}
+                className="dark:[filter:brightness(0)_invert(1)]"
                 onError={e => {
                   const el = e.currentTarget as HTMLImageElement;
                   el.style.display = "none";
