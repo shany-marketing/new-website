@@ -179,3 +179,8 @@ html { scroll-behavior: smooth; }
   0%, 100% { box-shadow: 0 0 20px rgba(201, 168, 106, 0.15); }
   50% { box-shadow: 0 0 40px rgba(201, 168, 106, 0.3); }
 }
+
+/* Logo dark/light switching — controlled by .dark class from ThemeProvider */
+.logo-dark { display: none; }
+.dark .logo-light { display: none; }
+.dark .logo-dark { display: block; }

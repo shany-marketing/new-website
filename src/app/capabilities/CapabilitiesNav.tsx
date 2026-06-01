@@ -41,8 +41,8 @@ export default function CapabilitiesNav({ cta }: Props) {
 
           {/* Col 1 — Logo (left) */}
           <Link href="/">
-            <img src="/logo.svg" alt="RatingIQ" style={{ height: "72px", width: "auto", objectFit: "contain" }} className="dark:hidden" />
-            <img src="/logo-white.svg" alt="RatingIQ" style={{ height: "72px", width: "auto", objectFit: "contain" }} className="hidden dark:block" />
+            <img src="/logo.svg" alt="RatingIQ" style={{ height: "72px", width: "auto", objectFit: "contain" }} className="logo-light" />
+            <img src="/logo-white.svg" alt="RatingIQ" style={{ height: "72px", width: "auto", objectFit: "contain" }} className="logo-dark" />
           </Link>
 
           {/* Col 2 — Nav links (always centered, never shifts) */}

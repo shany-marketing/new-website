@@ -141,8 +141,8 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
       <div className="flex items-center justify-between pt-8 pb-4 px-4 md:px-8 max-w-7xl mx-auto w-full">
         <div className="w-24" />
         <Link href="/dashboard" className="cursor-pointer hover:opacity-90 transition-opacity">
-          <img src="/logo.svg" alt="RatingIQ" style={{ height: "32px", width: "auto" }} className="dark:hidden" />
-          <img src="/logo-white.svg" alt="RatingIQ" style={{ height: "32px", width: "auto" }} className="hidden dark:block" />
+          <img src="/logo.svg" alt="RatingIQ" style={{ height: "32px", width: "auto" }} className="logo-light" />
+          <img src="/logo-white.svg" alt="RatingIQ" style={{ height: "32px", width: "auto" }} className="logo-dark" />
         </Link>
         <div className="flex items-center gap-3 justify-end">
           <NotificationBell />

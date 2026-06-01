@@ -42,8 +42,8 @@ function LoginForm() {
 
       {/* Logo */}
       <div className="flex items-center mb-8">
-        <img src="/logo.svg" alt="RatingIQ" style={{ height: "32px", width: "auto" }} className="dark:hidden" />
-        <img src="/logo-white.svg" alt="RatingIQ" style={{ height: "32px", width: "auto" }} className="hidden dark:block" />
+        <img src="/logo.svg" alt="RatingIQ" style={{ height: "32px", width: "auto" }} className="logo-light" />
+        <img src="/logo-white.svg" alt="RatingIQ" style={{ height: "32px", width: "auto" }} className="logo-dark" />
       </div>
 
       <h1 className="text-2xl font-bold text-foreground mb-1" style={{ fontFamily: "var(--font-manrope)" }}>
