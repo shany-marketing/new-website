@@ -160,7 +160,7 @@ const FEATURES = [
   {
     title: "Your rating, explained.",
     desc: "Platform by platform. Segment by segment. Month by month. The full picture of where your chain actually stands - and why.",
-    href: "/premium#benchmark",
+    href: "/radar",
     glow: "rgba(81,107,132,0.6)",
     glowBorder: "rgba(81,107,132,0.35)",
     iconBg: "rgba(81,107,132,0.08)",
