@@ -184,3 +184,6 @@ html { scroll-behavior: smooth; }
 .logo-dark { display: none; }
 .dark .logo-light { display: none; }
 .dark .logo-dark { display: block; }
+
+/* Partner carousel logos — white silhouettes in dark mode */
+.dark .partner-logo { filter: brightness(0) invert(1); }

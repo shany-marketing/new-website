@@ -1654,7 +1654,7 @@ function PartnersCarousel() {
                 src={p.logo}
                 alt={p.name}
                 style={{ maxHeight: "64px", maxWidth: (p as any).maxWidth || "160px", width: "auto", height: "auto", objectFit: "contain" }}
-                className="dark:[filter:brightness(0)_invert(1)]"
+                className="partner-logo"
                 onError={e => {
                   const el = e.currentTarget as HTMLImageElement;
                   el.style.display = "none";
