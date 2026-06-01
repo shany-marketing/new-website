@@ -211,9 +211,17 @@ const FEATURES = [
     id: "ai-responses",
     label: "AI Responses",
     badge: "Top feature",
-    headline: "A quality response for every review. You choose how hands-on to be.",
-    body: "For every review, RatingIQ generates a response in the guest's language - addressing what they praised, what they complained about, signed with your hotelier's name. A 12-point quality check runs automatically before anything goes out. Then you choose your mode: copy-paste it yourself, or let Auto-Respond post directly to Booking.com and Google with a single approval click. Same quality engine, two levels of control.",
-    detail: "Response generation per review, 12-point quality scoring, multi-turn refinement. Two modes - Copy-paste (manual control) or Auto-Respond (on-demand - one-click approval posts directly to Booking.com + Google).",
+    headline: "A quality response is waiting for every review. Before you even open the tab.",
+    body: [
+      "The moment you enter the responses section, a draft is already waiting for every review - including ratings with no written text, where guests scored rooms, cleanliness, or service without leaving a comment.",
+      "Every draft is scored automatically, so you know its quality before it goes anywhere.",
+      "Want to improve it? Use Refine - tell the system exactly what to fix or add, rather than editing the text yourself.",
+      "Your team can collaborate on a response before anything goes out - tag a colleague, leave a note, agree before it's posted.",
+      "Edit in whatever language works for you, and the system updates the original foreign language version automatically.",
+      "Once you've posted it on the platform, mark it as Posted - so your team always knows what's been handled.",
+      "Track your average quality score across all responses, and see exactly how many were handled automatically.",
+    ],
+    detail: "Response generation per review (including Google category ratings without text), quality score per response, average quality score. Refine by instruction. Bilingual editing with auto-sync. Internal collaboration and tagging. Mark as Posted. Auto-Respond coverage tracking.",
     visual: <ReviewResponseVisual />,
   },
   {
@@ -238,9 +246,12 @@ const FEATURES = [
     id: "reviews",
     label: "Reviews",
     badge: null,
-    headline: "Every review your chain has ever received. All in one place.",
-    body: "Every review from Booking.com, Google, Expedia, and TripAdvisor - searchable, filterable, sortable. By platform, by rating, by response status, by date. No more switching tabs. No more missing a review from a platform you forgot to check. One view, every property.",
-    detail: "Full review access across all platforms, search and filter by platform / rating / response status / date, sort by rating or date, per-property and chain-wide.",
+    headline: "Reviews from the platforms that matter. All in one place.",
+    body: [
+      "Every review from Booking.com, Google, Expedia, and TripAdvisor lands in one inbox - a full year of guest feedback across your entire chain. Search and filter by platform, rating, date, or response status, and see at a glance which reviews are still waiting on a posted response.",
+      "Every review translates automatically, so your team can read and manage guest feedback in whatever language works best for them.",
+    ],
+    detail: "12 months of reviews across Booking.com, Google, Expedia, and TripAdvisor. Filter by platform / rating / date / posted status. Auto-translation for reviews and responses. Per-property and chain-wide view.",
     visual: null,
   },
   {
@@ -323,7 +334,9 @@ export default function PremiumClient() {
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 leading-snug" style={{ fontFamily: "var(--font-manrope)" }}>{f.label}</h2>
                   <p className="text-lg font-medium text-foreground mb-3 leading-relaxed">{f.headline}</p>
-                  <p className="text-muted leading-relaxed mb-5">{f.body}</p>
+                  {Array.isArray(f.body)
+                    ? f.body.map((p, i) => <p key={i} className="text-muted leading-relaxed mb-3 last:mb-5">{p}</p>)
+                    : <p className="text-muted leading-relaxed mb-5">{f.body}</p>}
                   <div className="rounded-xl p-4" style={{ background: "rgba(201,168,106,0.05)", border: "1px solid rgba(201,168,106,0.12)" }}>
                     <p className="text-xs text-muted leading-relaxed"><span className="font-semibold" style={{ color: "var(--gold)" }}>What you see: </span>{f.detail}</p>
                   </div>
@@ -353,19 +366,21 @@ export default function PremiumClient() {
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <p className="text-lg font-medium text-foreground mb-3">{f.headline}</p>
-                    <p className="text-muted leading-relaxed mb-5">{f.body}</p>
+                    {Array.isArray(f.body)
+                      ? f.body.map((p, i) => <p key={i} className="text-muted leading-relaxed mb-3 last:mb-5">{p}</p>)
+                      : <p className="text-muted leading-relaxed mb-5">{f.body}</p>}
                     <div className="rounded-xl p-4" style={{ background: "rgba(201,168,106,0.05)", border: "1px solid rgba(201,168,106,0.12)" }}>
                       <p className="text-xs text-muted leading-relaxed"><span className="font-semibold" style={{ color: "var(--gold)" }}>What you see: </span>{f.detail}</p>
                     </div>
                   </div>
                   <div className="rounded-2xl p-6" style={glass}>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-muted mb-4">Auto-Respond settings</p>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-muted mb-4">Responses overview</p>
                     {[
-                      { label: "Status", value: "Enabled", color: "var(--success)" },
-                      { label: "Min. rating threshold", value: "8.0 and above", color: "var(--foreground)" },
-                      { label: "Skip reviews with complaints", value: "Yes", color: "var(--foreground)" },
-                      { label: "Auto-post to platforms", value: "Booking · Google", color: "var(--gold)" },
-                      { label: "Max per run", value: "25 responses", color: "var(--foreground)" },
+                      { label: "Auto-Respond", value: "Active", color: "var(--success)" },
+                      { label: "Avg. response score", value: "91 / 100", color: "var(--gold)" },
+                      { label: "Auto-responded", value: "142 reviews", color: "var(--foreground)" },
+                      { label: "Platforms", value: "Booking · Google", color: "var(--gold)" },
+                      { label: "Translation", value: "Automatic", color: "var(--foreground)" },
                     ].map(s => (
                       <div key={s.label} className="flex justify-between py-2 border-b last:border-b-0" style={{ borderColor: "var(--glass-border)" }}>
                         <span className="text-xs text-muted">{s.label}</span>
