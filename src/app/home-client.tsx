@@ -1640,6 +1640,9 @@ const PARTNERS = [
 ];
 
 function PartnersCarousel() {
+  const { resolvedTheme } = useTheme();
+  const logoFilter = resolvedTheme === "dark" ? "brightness(0) invert(1)" : "none";
+
   return (
     <section className="py-10 px-4 md:px-8" style={{ borderTop: "1px solid var(--glass-border)", borderBottom: "1px solid var(--glass-border)" }}>
       <p className="text-[10px] font-semibold uppercase tracking-widest text-center mb-8" style={{ color: "var(--muted)" }}>
@@ -1652,7 +1655,7 @@ function PartnersCarousel() {
               <img
                 src={p.logo}
                 alt={p.name}
-                style={{ maxHeight: "64px", maxWidth: (p as any).maxWidth || "160px", width: "auto", height: "auto", objectFit: "contain" }}
+                style={{ maxHeight: "64px", maxWidth: (p as any).maxWidth || "160px", width: "auto", height: "auto", objectFit: "contain", filter: logoFilter }}
                 onError={e => {
                   const el = e.currentTarget as HTMLImageElement;
                   el.style.display = "none";
@@ -2679,7 +2682,7 @@ export default function HomeClient() {
             {/* Brand */}
             <div className="col-span-2 md:col-span-1">
               <div className="mb-3">
-                <img src="/logo.svg" alt="RatingIQ" style={{ height: "44px", width: "auto", objectFit: "contain" }} />
+                <img src={resolvedTheme === "dark" ? "/logo-white.svg" : "/logo.svg"} alt="RatingIQ" style={{ height: "44px", width: "auto", objectFit: "contain" }} />
               </div>
               <p className="text-muted text-xs leading-relaxed">From Review to Revenue.</p>
             </div>
