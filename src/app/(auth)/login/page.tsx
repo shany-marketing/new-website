@@ -4,6 +4,7 @@ import { Suspense, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 const glass = {
   background: "var(--nav-scrolled-bg)",
@@ -16,6 +17,7 @@ function LoginForm() {
   const searchParams = useSearchParams();
   const rawCallback = searchParams.get("callbackUrl") || "/dashboard";
   const callbackUrl = rawCallback.startsWith("/") && !rawCallback.startsWith("//") ? rawCallback : "/dashboard";
+  const { resolvedTheme } = useTheme();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,7 +42,7 @@ function LoginForm() {
 
       {/* Logo */}
       <div className="flex items-center mb-8">
-        <img src="/logo.svg" alt="RatingIQ" style={{ height: "32px", width: "auto" }} />
+        <img src={resolvedTheme === "dark" ? "/logo-white.svg" : "/logo.svg"} alt="RatingIQ" style={{ height: "32px", width: "auto" }} />
       </div>
 
       <h1 className="text-2xl font-bold text-foreground mb-1" style={{ fontFamily: "var(--font-manrope)" }}>

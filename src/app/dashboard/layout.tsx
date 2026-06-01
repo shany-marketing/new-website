@@ -9,6 +9,7 @@ import { clsx } from "clsx";
 import ChatDrawer from "@/components/chat/chat-drawer";
 import ThemeToggle from "@/components/ui/theme-toggle";
 import NotificationBell from "@/components/ui/notification-bell";
+import { useTheme } from "next-themes";
 
 type PlanTier = "free" | "ratings" | "premium" | null;
 
@@ -48,6 +49,7 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { data: session } = useSession();
+  const { resolvedTheme } = useTheme();
   const [plan, setPlan] = useState<PlanTier>(null);
 
   const isAdmin = session?.user?.role === "admin";
@@ -139,7 +141,7 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
       <div className="flex items-center justify-between pt-8 pb-4 px-4 md:px-8 max-w-7xl mx-auto w-full">
         <div className="w-24" />
         <Link href="/dashboard" className="cursor-pointer hover:opacity-90 transition-opacity">
-          <img src="/logo.svg" alt="RatingIQ" style={{ height: "32px", width: "auto" }} />
+          <img src={resolvedTheme === "dark" ? "/logo-white.svg" : "/logo.svg"} alt="RatingIQ" style={{ height: "32px", width: "auto" }} />
         </Link>
         <div className="flex items-center gap-3 justify-end">
           <NotificationBell />

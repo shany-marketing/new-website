@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { pushLeadToCRM } from "@/app/components/SignupModal";
+import { useTheme } from "next-themes";
 
 
 type State = "idle" | "loading" | "done" | "error";
@@ -12,6 +13,7 @@ export default function TalkNowPage() {
   const [phone, setPhone] = useState("");
   const [hotel, setHotel] = useState("");
   const [state, setState] = useState<State>("idle");
+  const { resolvedTheme } = useTheme();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -47,7 +49,7 @@ export default function TalkNowPage() {
     >
       {/* Logo */}
       <Link href="/" style={{ marginBottom: 48, display: "block" }}>
-        <img src="/logo.svg" alt="RatingIQ" style={{ height: 56, width: "auto" }} />
+        <img src={resolvedTheme === "dark" ? "/logo-white.svg" : "/logo.svg"} alt="RatingIQ" style={{ height: 56, width: "auto" }} />
       </Link>
 
       <div
