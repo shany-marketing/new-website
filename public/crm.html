@@ -84,6 +84,7 @@ header{background:var(--navy);padding:0 24px;height:52px;display:flex;align-item
 .src-email{background:#FFF8EE;color:#7A5010;}
 .src-linkedin{background:#EBF3FC;color:#0A66C2;}
 .src-manual{background:#F0F4FF;color:#516B84;}
+.src-omri{background:#F0FBF0;color:#1E7A1E;}
 
 .status-pill{display:inline-flex;align-items:center;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;letter-spacing:0.3px;white-space:nowrap;}
 .sp-Prospect{background:rgba(122,138,150,0.12);color:var(--s-prospect);}
@@ -94,6 +95,7 @@ header{background:var(--navy);padding:0 24px;height:52px;display:flex;align-item
 .sp-Converted{background:rgba(20,82,20,0.12);color:var(--s-converted);}
 .sp-Lost{background:rgba(155,32,32,0.1);color:var(--s-lost);}
 .sp-Archived{background:rgba(170,170,170,0.12);color:var(--s-archived);}
+.sp-Not\ Relevant{background:rgba(180,100,0,0.1);color:#7A4500;}
 .sp-Blacklisted{background:rgba(74,0,0,0.1);color:var(--s-blacklisted);}
 
 .status-select{height:24px;border:1px solid var(--line);border-radius:4px;font-size:11px;color:var(--navy);background:#fff;padding:0 4px;font-weight:600;}
@@ -220,12 +222,13 @@ header{background:var(--navy);padding:0 24px;height:52px;display:flex;align-item
     <div class="source-tab" data-source="email_campaign" onclick="setSourceTab(this,'email_campaign')">Email Campaign</div>
     <div class="source-tab" data-source="linkedin" onclick="setSourceTab(this,'linkedin')">LinkedIn</div>
     <div class="source-tab" data-source="manual" onclick="setSourceTab(this,'manual')">Manual</div>
+    <div class="source-tab" data-source="omri" onclick="setSourceTab(this,'omri')">Omri</div>
   </div>
   <select id="filter-status" onchange="renderTable()">
     <option value="">All Statuses</option>
     <option>Prospect</option><option>Engaged</option><option>High Intent</option>
     <option>Demo Booked</option><option>Demo Done</option><option>Converted</option>
-    <option>Lost</option><option>Archived</option><option>Blacklisted</option>
+    <option>Closed Won</option><option>Lost</option><option>Archived</option><option>Not Relevant</option><option>Blacklisted</option>
   </select>
   <select id="filter-assigned" onchange="renderTable()">
     <option value="">All Owners</option>
@@ -294,7 +297,7 @@ header{background:var(--navy);padding:0 24px;height:52px;display:flex;align-item
     </div>
     <div class="form-2col">
       <div class="form-group"><label>Email *</label><input id="f-email" type="email" placeholder="Work email"/></div>
-      <div class="form-group"><label>Chain Name *</label><input id="f-chain_name" placeholder="Chain name"/></div>
+      <div class="form-group"><label>Chain Name</label><input id="f-chain_name" placeholder="Chain name"/></div>
     </div>
     <div class="form-group"><label>Property Name</label><input id="f-property_name" placeholder="Specific property (for email leads)"/></div>
 
@@ -306,13 +309,14 @@ header{background:var(--navy);padding:0 24px;height:52px;display:flex;align-item
           <option value="email_campaign">Email Campaign</option>
           <option value="linkedin">LinkedIn</option>
           <option value="manual">Manual</option>
+          <option value="omri">Omri</option>
         </select>
       </div>
       <div class="form-group"><label>Status</label>
         <select id="f-status">
           <option>Prospect</option><option>Engaged</option><option>High Intent</option>
           <option>Demo Booked</option><option>Demo Done</option><option>Converted</option>
-          <option>Lost</option><option>Archived</option>
+          <option>Closed Won</option><option>Lost</option><option>Archived</option><option>Not Relevant</option>
         </select>
       </div>
     </div>
@@ -589,8 +593,8 @@ function populateFilterDropdowns() {
 
 // ─── TABLE ────────────────────────────────────────────────────
 function sourceBadge(src) {
-  const map = {website:'src-website',email_campaign:'src-email',linkedin:'src-linkedin',manual:'src-manual'};
-  const label = {website:'Website',email_campaign:'Email',linkedin:'LinkedIn',manual:'Manual'};
+  const map = {website:'src-website',email_campaign:'src-email',linkedin:'src-linkedin',manual:'src-manual',omri:'src-omri'};
+  const label = {website:'Website',email_campaign:'Email',linkedin:'LinkedIn',manual:'Manual',omri:'Omri'};
   return `<span class="source-badge ${map[src]||'src-manual'}">${label[src]||src}</span>`;
 }
 
@@ -625,7 +629,7 @@ function renderTable() {
       <td style="font-size:11px;color:var(--muted);">${l.campaign||'—'}</td>
       <td>
         <select class="status-select" onclick="event.stopPropagation()" onchange="changeStatus('${l.id}',this.value)">
-          ${['Prospect','Engaged','High Intent','Demo Booked','Demo Done','Converted','Lost','Archived','Blacklisted'].map(s=>`<option ${s===l.status?'selected':''}>${s}</option>`).join('')}
+          ${['Prospect','Engaged','High Intent','Demo Booked','Demo Done','Converted','Lost','Archived','Not Relevant','Blacklisted'].map(s=>`<option ${s===l.status?'selected':''}>${s}</option>`).join('')}
         </select>
       </td>
       <td class="assigned-cell">${l.assigned_to||'—'}</td>
@@ -638,7 +642,7 @@ function renderTable() {
 }
 
 function statusColor(s) {
-  const m = {Prospect:'#7A8A96',Engaged:'#2040A0','High Intent':'#C9A86A','Demo Booked':'#1A6B32','Demo Done':'#0A7A6A',Converted:'#145214',Lost:'#9B2020',Archived:'#AAA',Blacklisted:'#4A0000'};
+  const m = {Prospect:'#7A8A96',Engaged:'#2040A0','High Intent':'#C9A86A','Demo Booked':'#1A6B32','Demo Done':'#0A7A6A',Converted:'#145214',Lost:'#9B2020',Archived:'#AAA','Not Relevant':'#B46500',Blacklisted:'#4A0000'};
   return m[s] || '#AAA';
 }
 
@@ -717,7 +721,7 @@ function renderProfileTab(lead) {
     </div>
     <div style="margin-bottom:8px;">
       <div class="section-divider" style="margin:0 0 4px;">Assignment</div>
-      ${field('Status', editableSelect(lead.id,'status',lead.status,['Prospect','Engaged','High Intent','Demo Booked','Demo Done','Converted','Lost','Archived','Blacklisted']))}
+      ${field('Status', editableSelect(lead.id,'status',lead.status,['Prospect','Engaged','High Intent','Demo Booked','Demo Done','Converted','Lost','Archived','Not Relevant','Blacklisted']))}
       ${field('Assigned To', editableInput(lead.id,'assigned_to',lead.assigned_to||''))}
       ${field('Campaign', editableInput(lead.id,'campaign',lead.campaign||''))}
     </div>
@@ -926,7 +930,7 @@ function saveLead() {
   const firstName = get('f-first_name');
   const email = get('f-email');
   const chain = get('f-chain_name');
-  if (!firstName || !email || !chain) { alert('First name, email, and chain name are required.'); return; }
+  if (!firstName || !email) { alert('First name and email are required.'); return; }
   const lead = {
     id: uid(),
     first_name: firstName,
